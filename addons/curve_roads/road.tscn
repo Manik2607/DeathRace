@@ -1,0 +1,66 @@
+[gd_scene load_steps=6 format=3 uid="uid://d3u7wdfm3p27r"]
+
+[ext_resource type="Shader" uid="uid://cjubaqwomy3ht" path="res://models/maps/Terrain.tres" id="1_x08ot"]
+[ext_resource type="Texture2D" uid="uid://bcmu4nyngtulc" path="res://levels/mario/MarioMap_Untitled-1.png" id="2_vb31x"]
+[ext_resource type="Texture2D" uid="uid://bxqrxc4onn6bi" path="res://levels/mario/black-asphalt-01_normal.png" id="3_51188"]
+
+[sub_resource type="Curve3D" id="Curve3D_nk3re"]
+_data = {
+"points": PackedVector3Array(-68.8039, 2.51781, 13.9624, 68.8039, -2.51781, -13.9624, -42.4438, 10.8659, -137.042, -42.0125, 0, -22.2419, 42.0125, 0, 22.2419, 112.132, 9.64355, -147.514, 109.974, 15.3225, -88.9676, -109.974, -15.3225, 88.9676, 87.4193, -2.03357, 21.7721, 114.917, 0, -11.1209, -114.917, 0, 11.1209, -0.312721, -3.30115, 223.185, -1.23569, 0, 72.9041, 1.23569, 0, -72.9041, -183.191, 0, 114.447, 13.5923, -13.1322, 45.7195, -13.5923, 13.1322, -45.7195, -97.93, 9.60986, 42.7783, -68.8039, 2.51781, 13.9624, 68.8039, -2.51781, -13.9624, -42.4438, 10.8659, -137.042),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 7
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8gi1j"]
+render_priority = 0
+shader = ExtResource("1_x08ot")
+shader_parameter/Albedo = ExtResource("2_vb31x")
+shader_parameter/Normal_Map = ExtResource("3_51188")
+
+[node name="Road" type="Path3D"]
+curve = SubResource("Curve3D_nk3re")
+
+[node name="road" type="CSGPolygon3D" parent="."]
+use_collision = true
+polygon = PackedVector2Array(0, 0, 15, 0, 15, 0.3, 0, 0.3)
+mode = 2
+path_node = NodePath("..")
+path_interval_type = 0
+path_interval = 3.0
+path_simplify_angle = 2.0
+path_rotation = 2
+path_local = false
+path_continuous_u = true
+path_u_distance = 1.0
+path_joined = true
+material = SubResource("ShaderMaterial_8gi1j")
+
+[node name="road2" type="CSGPolygon3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.192177, 0, 0.502342)
+use_collision = true
+polygon = PackedVector2Array(0, 0, 0, 2, 0.636018, 1.99367, 1, 0)
+mode = 2
+path_node = NodePath("..")
+path_interval_type = 0
+path_interval = 4.0
+path_simplify_angle = 1.0
+path_rotation = 2
+path_local = false
+path_continuous_u = true
+path_u_distance = 1.0
+path_joined = true
+
+[node name="road3" type="CSGPolygon3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0596466, 0, -0.157455)
+use_collision = true
+polygon = PackedVector2Array(14, 0, 14.3858, 2.00492, 15, 2, 15, 0)
+mode = 2
+path_node = NodePath("..")
+path_interval_type = 0
+path_interval = 4.0
+path_simplify_angle = 1.0
+path_rotation = 2
+path_local = false
+path_continuous_u = true
+path_u_distance = 1.0
+path_joined = true

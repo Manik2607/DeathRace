@@ -1,0 +1,355 @@
+[gd_scene load_steps=16 format=3 uid="uid://cjvqxx7sn62vx"]
+
+[ext_resource type="Script" path="res://cars/BaseCar.gd" id="1_iqrfq"]
+[ext_resource type="PackedScene" path="res://Extra/camera/camera_3d.tscn" id="2_5wm5h"]
+[ext_resource type="Texture2D" uid="uid://cxtoftisngj4a" path="res://icon.svg" id="3_6rp7n"]
+[ext_resource type="Script" path="res://UI/Hud.gd" id="4_cgvas"]
+[ext_resource type="Shader" path="res://cars/speedLines.gdshader" id="4_lh311"]
+[ext_resource type="Shader" path="res://cars/viniat.gdshader" id="5_ha6fq"]
+[ext_resource type="Script" path="res://cars/stearing.gd" id="5_tp0cg"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mm2gk"]
+size = Vector3(2.08254, 1.39698, 5.70427)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_wrcur"]
+noise_type = 2
+frequency = 0.144
+fractal_type = 0
+cellular_distance_function = 3
+cellular_jitter = 0.363
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_au6ua"]
+noise = SubResource("FastNoiseLite_wrcur")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_f3asb"]
+shader = ExtResource("4_lh311")
+shader_parameter/line_color = Color(1, 1, 1, 1)
+shader_parameter/line_count = 1.45
+shader_parameter/line_density = 0.518
+shader_parameter/line_faloff = 0.508
+shader_parameter/mask_size = 0.092
+shader_parameter/mask_edge = 0.5
+shader_parameter/animation_speed = 14.888
+shader_parameter/noise = SubResource("NoiseTexture2D_au6ua")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_e7npv"]
+shader = ExtResource("5_ha6fq")
+shader_parameter/r_displacement = Vector2(1, 0)
+shader_parameter/g_displacement = Vector2(0, 0)
+shader_parameter/b_displacement = Vector2(-1, 0)
+
+[sub_resource type="Shader" id="Shader_pssug"]
+code = "/*
+	放射状ブラーエフェクト by あるる（きのもと　結衣） @arlez80
+	Radial Blur Effect by Yui Kinomoto
+
+	MIT License
+*/
+shader_type canvas_item;
+
+// 発射中央部
+uniform vec2 blur_center = vec2( 0.5, 0.5 );
+// ブラー強度
+uniform float blur_power : hint_range( 0.0, 1.0 ) = 0.01;
+// サンプリング回数
+uniform int sampling_count : hint_range( 1, 64 ) = 10;
+uniform sampler2D SCREEN_TEXTURE : hint_screen_texture, filter_linear_mipmap;
+void fragment( )
+{
+	
+	vec2 direction = SCREEN_UV - blur_center;
+	vec3 c = vec3( 0.0, 0.0, 0.0 );
+	float f = 1.0 / float( sampling_count );
+	for( int i=0; i < sampling_count; i++ ) {
+		c += texture( SCREEN_TEXTURE, SCREEN_UV - blur_power * direction * float(i) ).rgb * f;
+	}
+	COLOR.rgb = c;
+}
+
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sahl3"]
+shader = SubResource("Shader_pssug")
+shader_parameter/blur_center = Vector2(0.5, 0.6)
+shader_parameter/blur_power = 0.01
+shader_parameter/sampling_count = 6
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ith1n"]
+size = Vector2(140, 140)
+
+[node name="car" type="VehicleBody3D"]
+center_of_mass_mode = 1
+center_of_mass = Vector3(0, -0.1, 0)
+script = ExtResource("1_iqrfq")
+STEER_LIMIT = 0.8
+engine_force_value = 100
+Blur_Amount = 0.06
+
+[node name="wheal0" type="VehicleWheel3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.03343, 0.340338, -1.57977)
+use_as_traction = true
+use_as_steering = true
+wheel_radius = 0.431
+wheel_rest_length = 0.2
+wheel_friction_slip = 3.0
+suspension_stiffness = 30.0
+suspension_max_force = 10000.0
+
+[node name="wheal1" type="VehicleWheel3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.02622, 0.340338, -1.57977)
+use_as_traction = true
+use_as_steering = true
+wheel_radius = 0.431
+wheel_rest_length = 0.2
+wheel_friction_slip = 3.0
+suspension_stiffness = 30.0
+suspension_max_force = 10000.0
+
+[node name="wheal2" type="VehicleWheel3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.03343, 0.340338, 1.51869)
+use_as_traction = true
+wheel_radius = 0.431
+wheel_rest_length = 0.2
+wheel_friction_slip = 3.0
+suspension_stiffness = 30.0
+suspension_max_force = 10000.0
+
+[node name="wheal3" type="VehicleWheel3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.02622, 0.340338, 1.51869)
+use_as_traction = true
+wheel_radius = 0.431
+wheel_rest_length = 0.2
+wheel_friction_slip = 3.0
+suspension_stiffness = 30.0
+suspension_max_force = 10000.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.689432, -0.062412)
+shape = SubResource("BoxShape3D_mm2gk")
+
+[node name="look" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2149, 0)
+
+[node name="Camera3D" parent="look" instance=ExtResource("2_5wm5h")]
+transform = Transform3D(0.999339, -0.0313471, 0.0184216, 0.0201797, 0.899642, 0.436162, -0.0302453, -0.435502, 0.89968, -0.257111, 0.992546, 8.29754)
+target_distance = 8.0
+target_height = 3.0
+speed = 12.0
+
+[node name="Speed lines" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_f3asb")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_6rp7n")
+
+[node name="Chromatic" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_e7npv")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_6rp7n")
+
+[node name="motion blur" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_sahl3")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_6rp7n")
+
+[node name="Hud" type="CanvasLayer" parent="."]
+layer = 2
+script = ExtResource("4_cgvas")
+
+[node name="Controls" type="Control" parent="Hud"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="Up" type="TouchScreenButton" parent="Hud/Controls"]
+visible = false
+modulate = Color(0, 0, 0, 0.27451)
+position = Vector2(160, 323)
+scale = Vector2(0.8125, 0.71875)
+texture_normal = ExtResource("3_6rp7n")
+texture_pressed = ExtResource("3_6rp7n")
+shape = SubResource("RectangleShape2D_ith1n")
+action = "w"
+
+[node name="Down" type="TouchScreenButton" parent="Hud/Controls"]
+visible = false
+modulate = Color(0, 0, 0, 0.27451)
+z_index = 2
+position = Vector2(162, 461)
+scale = Vector2(0.8125, 0.71875)
+texture_normal = ExtResource("3_6rp7n")
+texture_pressed = ExtResource("3_6rp7n")
+shape = SubResource("RectangleShape2D_ith1n")
+action = "s"
+
+[node name="left" type="TouchScreenButton" parent="Hud/Controls"]
+visible = false
+modulate = Color(0, 0, 0, 0.27451)
+z_index = 2
+position = Vector2(694, 389)
+scale = Vector2(0.8125, 0.71875)
+texture_normal = ExtResource("3_6rp7n")
+texture_pressed = ExtResource("3_6rp7n")
+shape = SubResource("RectangleShape2D_ith1n")
+action = "a"
+
+[node name="right" type="TouchScreenButton" parent="Hud/Controls"]
+visible = false
+modulate = Color(0, 0, 0, 0.27451)
+z_index = 2
+position = Vector2(885, 387)
+scale = Vector2(0.8125, 0.71875)
+texture_normal = ExtResource("3_6rp7n")
+texture_pressed = ExtResource("3_6rp7n")
+shape = SubResource("RectangleShape2D_ith1n")
+action = "d"
+
+[node name="break" type="TouchScreenButton" parent="Hud/Controls"]
+visible = false
+modulate = Color(0, 0, 0, 0.27451)
+z_index = 2
+position = Vector2(987, 220)
+scale = Vector2(0.53125, 0.554688)
+texture_normal = ExtResource("3_6rp7n")
+texture_pressed = ExtResource("3_6rp7n")
+shape = SubResource("RectangleShape2D_ith1n")
+action = "break"
+
+[node name="stearing" type="Sprite2D" parent="Hud/Controls"]
+modulate = Color(0.615686, 0.615686, 0.615686, 1)
+self_modulate = Color(1, 1, 1, 0.909804)
+position = Vector2(820, 359)
+scale = Vector2(2, 2)
+texture = ExtResource("3_6rp7n")
+script = ExtResource("5_tp0cg")
+
+[node name="speed" type="Label" parent="Hud"]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="Panel" type="Panel" parent="Hud"]
+visible = false
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -493.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="Hud/Panel"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 35.0
+offset_top = -63.0
+offset_right = 151.0
+offset_bottom = -24.0
+grow_vertical = 0
+text = "Back
+"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Hud/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 28.0
+offset_bottom = -81.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Engin Force" type="MarginContainer" parent="Hud/Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_right = 30
+
+[node name="Control" type="HBoxContainer" parent="Hud/Panel/VBoxContainer/Engin Force"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Hud/Panel/VBoxContainer/Engin Force/Control"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "Speed"
+
+[node name="HSlider" type="HSlider" parent="Hud/Panel/VBoxContainer/Engin Force/Control"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+max_value = 3000.0
+
+[node name="Stearspeed" type="MarginContainer" parent="Hud/Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_right = 30
+
+[node name="Control" type="HBoxContainer" parent="Hud/Panel/VBoxContainer/Stearspeed"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Hud/Panel/VBoxContainer/Stearspeed/Control"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "stear Speed"
+
+[node name="HSlider" type="HSlider" parent="Hud/Panel/VBoxContainer/Stearspeed/Control"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+max_value = 10.0
+step = 0.01
+
+[node name="blur" type="MarginContainer" parent="Hud/Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_right = 30
+
+[node name="Control" type="HBoxContainer" parent="Hud/Panel/VBoxContainer/blur"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Hud/Panel/VBoxContainer/blur/Control"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "motion  blur
+"
+
+[node name="HSlider" type="HSlider" parent="Hud/Panel/VBoxContainer/blur/Control"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+max_value = 1.0
+step = 0.001
+value = 0.015
+
+[node name="Button" type="Button" parent="Hud"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -77.0
+offset_bottom = 37.0
+grow_horizontal = 0
+text = "HUD"
+
+[connection signal="button_down" from="Hud/Panel/Button" to="Hud" method="_on_button_button_down"]
+[connection signal="value_changed" from="Hud/Panel/VBoxContainer/Engin Force/Control/HSlider" to="." method="_on_h_slider_value_changed_speed"]
+[connection signal="value_changed" from="Hud/Panel/VBoxContainer/Stearspeed/Control/HSlider" to="." method="_on_h_slider_value_changed"]
+[connection signal="value_changed" from="Hud/Panel/VBoxContainer/blur/Control/HSlider" to="." method="_on_blur_value_changed"]
+[connection signal="pressed" from="Hud/Button" to="Hud" method="_on_button_pressed"]

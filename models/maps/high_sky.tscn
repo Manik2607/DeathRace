@@ -1,10 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://2mafbyjwdtjf"]
+[gd_scene load_steps=12 format=3 uid="uid://2mafbyjwdtjf"]
 
 [ext_resource type="Material" uid="uid://bx6qeabdhq2s" path="res://textures/materials/dark/material_01.tres" id="1_kwign"]
 [ext_resource type="PackedScene" uid="uid://bnaqlnd0442bs" path="res://cars/cybertruck/Cybertruck.tscn" id="2_g8nns"]
 [ext_resource type="Material" uid="uid://dn16yhnqtqh7i" path="res://textures/materials/orange/material_02.tres" id="2_mjtbq"]
-[ext_resource type="PackedScene" uid="uid://dayt1nlofg536" path="res://camera_3d.tscn" id="3_at02a"]
-[ext_resource type="Script" path="res://camera.gd" id="5_3nyrm"]
+[ext_resource type="PackedScene" uid="uid://cppklosq84psk" path="res://models/maps/terrain.tscn" id="6_ou6e0"]
 
 [sub_resource type="Gradient" id="Gradient_6tqwo"]
 offsets = PackedFloat32Array(0.404372, 1)
@@ -33,7 +32,9 @@ ssao_radius = 8.27
 ssao_intensity = 17.46
 ssil_enabled = true
 glow_enabled = true
+fog_enabled = true
 fog_light_color = Color(0.733333, 0.780392, 0.858824, 1)
+fog_density = 0.001
 volumetric_fog_emission = Color(0.34902, 0.34902, 0.34902, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_gv1xc"]
@@ -44,7 +45,7 @@ volumetric_fog_emission = Color(0.34902, 0.34902, 0.34902, 1)
 environment = SubResource("Environment_ch0uw")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0.499921, -0.758968, 0.41719, 0.0090927, 0.486277, 0.873758, 0, 5.94899, 0)
 shadow_enabled = true
 
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
@@ -108,19 +109,11 @@ size = Vector3(16.014, 1.46172, 21.4679)
 
 [node name="car" parent="." instance=ExtResource("2_g8nns")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.891251, 0)
-
-[node name="look" type="Node3D" parent="car"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.43126, 0)
-
-[node name="Camera3D" parent="car/look" instance=ExtResource("3_at02a")]
-transform = Transform3D(0.999339, -0.0313471, 0.0184216, 0.0201797, 0.899642, 0.436162, -0.0302453, -0.435502, 0.89968, -0.257111, 0.992546, 8.29754)
-target_height = 6.0
-speed = 12.0
+engine_force_value = 50
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.9992, 0.549023, 0)
 mesh = SubResource("BoxMesh_gv1xc")
 
-[node name="Camera3D2" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 10)
-script = ExtResource("5_3nyrm")
+[node name="Terrain" parent="." instance=ExtResource("6_ou6e0")]
+transform = Transform3D(16.5559, 0, 0, 0, 16.5559, 0, 0, 0, 16.5559, 30.319, -287.736, -571.855)

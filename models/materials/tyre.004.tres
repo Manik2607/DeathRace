@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://cmcwlivvye2nf"]
+
+[resource]
+resource_name = "tyre.004"
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.12666, 0.12666, 0.12666, 1)
+metallic = 0.4
+roughness = 0.272166

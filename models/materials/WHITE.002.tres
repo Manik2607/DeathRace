@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://bly8xvorwff20"]
+
+[resource]
+resource_name = "WHITE.002"
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.906332, 0.906332, 0.906332, 1)
+metallic = 0.4
+roughness = 0.272166

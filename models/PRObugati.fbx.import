@@ -1,0 +1,179 @@
+[remap]
+
+importer="scene"
+importer_version=1
+type="PackedScene"
+uid="uid://b77s58d5kw7w3"
+path="res://.godot/imported/PRObugati.fbx-01823e14b8f886545ca315148b6451ef.scn"
+
+[deps]
+
+source_file="res://models/PRObugati.fbx"
+dest_files=["res://.godot/imported/PRObugati.fbx-01823e14b8f886545ca315148b6451ef.scn"]
+
+[params]
+
+nodes/root_type="Node3D"
+nodes/root_name="Scene Root"
+nodes/apply_root_scale=true
+nodes/root_scale=1.0
+meshes/ensure_tangents=true
+meshes/generate_lods=true
+meshes/create_shadow_meshes=true
+meshes/light_baking=1
+meshes/lightmap_texel_size=0.2
+skins/use_named_skins=true
+animation/import=true
+animation/fps=30
+animation/trimming=false
+animation/remove_immutable_tracks=true
+import_script/path=""
+_subresources={
+"materials": {
+"BLUE.002": {
+"use_external/enabled": true,
+"use_external/path": "res://models/materials/BLUE.002.tres"
+},
+"DefaultMaterial": {
+"use_external/enabled": true,
+"use_external/path": "res://models/materials/DefaultMaterial.tres"
+},
+"ENGINE": {
+"use_external/enabled": true,
+"use_external/path": "res://models/materials/ENGINE.tres"
+},
+"GRILL.004": {
+"use_external/enabled": true,
+"use_external/path": "res://models/materials/GRILL.004.tres"
+},
+"Mirrors": {
+"use_external/enabled": true,
+"use_external/path": "res://models/materials/Mirrors.tres"
+},
+"NAVY": {
+"use_external/enabled": true,
+"use_external/path": "res://models/materials/NAVY.tres"
+},
+"Nut.004": {
+"use_external/enabled": true,
+"use_external/path": "res://models/materials/Nut.004.tres"
+},
+"Trim.004": {
+"use_external/enabled": true,
+"use_external/path": "res://models/materials/Trim.004.tres"
+},
+"WHEEL CURB.004": {
+"use_external/enabled": true,
+"use_external/path": "res://models/materials/WHEEL CURB.004.tres"
+},
+"WHITE.002": {
+"use_external/enabled": true,
+"use_external/path": "res://models/materials/WHITE.002.tres"
+},
+"aluminiumm": {
+"use_external/enabled": true,
+"use_external/path": "res://models/materials/aluminiumm.tres"
+},
+"black": {
+"use_external/enabled": true,
+"use_external/path": "res://models/materials/black.tres"
+},
+"black cable": {
+"use_external/enabled": true,
+"use_external/path": "res://models/materials/black cable.tres"
+},
+"black fuel_tank.004": {
+"use_external/enabled": true,
+"use_external/path": "res://models/materials/black fuel_tank.004.tres"
+},
+"black side vent": {
+"use_external/enabled": true,
+"use_external/path": "res://models/materials/black side vent.tres"
+},
+"black strip.004": {
+"use_external/enabled": true,
+"use_external/path": "res://models/materials/black strip.004.tres"
+},
+"black vent.004": {
+"use_external/enabled": true,
+"use_external/path": "res://models/materials/black vent.004.tres"
+},
+"brake disk.004": {
+"use_external/enabled": true,
+"use_external/path": "res://models/materials/brake disk.004.tres"
+},
+"breaks ": {
+"use_external/enabled": true,
+"use_external/path": "res://models/materials/breaks .tres"
+},
+"cALLIPERS.004": {
+"use_external/enabled": true,
+"use_external/path": "res://models/materials/cALLIPERS.004.tres"
+},
+"exhaust": {
+"use_external/enabled": true,
+"use_external/path": "res://models/materials/exhaust.tres"
+},
+"front window.004": {
+"use_external/enabled": true,
+"use_external/path": "res://models/materials/front window.004.tres"
+},
+"glass front.004": {
+"use_external/enabled": true,
+"use_external/path": "res://models/materials/glass front.004.tres"
+},
+"glossy": {
+"use_external/enabled": true,
+"use_external/path": "res://models/materials/glossy.tres"
+},
+"headlight glass.004": {
+"use_external/enabled": true,
+"use_external/path": "res://models/materials/headlight glass.004.tres"
+},
+"headlight_square.004": {
+"use_external/enabled": true,
+"use_external/path": "res://models/materials/headlight_square.004.tres"
+},
+"red glass": {
+"use_external/enabled": true,
+"use_external/path": "res://models/materials/red glass.tres"
+},
+"red.002": {
+"use_external/enabled": true,
+"use_external/path": "res://models/materials/red.002.tres"
+},
+"reflective coat.004": {
+"use_external/enabled": true,
+"use_external/path": "res://models/materials/reflective coat.004.tres"
+},
+"rim blue.004": {
+"use_external/enabled": true,
+"use_external/path": "res://models/materials/rim blue.004.tres"
+},
+"rim_silver.004": {
+"use_external/enabled": true,
+"use_external/path": "res://models/materials/rim_silver.004.tres"
+},
+"silver door strip.004": {
+"use_external/enabled": true,
+"use_external/path": "res://models/materials/silver door strip.004.tres"
+},
+"silver trim": {
+"use_external/enabled": true,
+"use_external/path": "res://models/materials/silver trim.tres"
+},
+"tyre.004": {
+"use_external/enabled": true,
+"use_external/path": "res://models/materials/tyre.004.tres"
+},
+"wheel joint.004": {
+"use_external/enabled": true,
+"use_external/path": "res://models/materials/wheel joint.004.tres"
+},
+"white holders": {
+"use_external/enabled": true,
+"use_external/path": "res://models/materials/white holders.tres"
+}
+}
+}
+gltf/embedded_image_handling=1

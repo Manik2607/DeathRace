@@ -1,16 +1,20 @@
-[gd_scene load_steps=3 format=3 uid="uid://4p4qcoogibct"]
+[gd_scene load_steps=7 format=3 uid="uid://cjvqxx7sn62vx"]
 
-[ext_resource type="Script" path="res://car.gd" id="1_n1blj"]
+[ext_resource type="Script" path="res://cars/BaseCar.gd" id="1_iqrfq"]
+[ext_resource type="PackedScene" path="res://Extra/camera/camera_3d.tscn" id="2_5wm5h"]
+[ext_resource type="Texture2D" uid="uid://comy0f1gqjrlt" path="res://UI/Images/Untitled-3.png" id="3_gwqv8"]
+[ext_resource type="Script" path="res://cars/stearing.gd" id="5_tp0cg"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_mm2gk"]
 size = Vector3(2.08254, 1.39698, 5.70427)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2e2eq"]
+size = Vector2(140, 140)
+
 [node name="car" type="VehicleBody3D"]
 center_of_mass_mode = 1
 center_of_mass = Vector3(0, -0.1, 0)
-script = ExtResource("1_n1blj")
-STEER_LIMIT = 0.8
-engine_force_value = 100
+script = ExtResource("1_iqrfq")
 
 [node name="wheal0" type="VehicleWheel3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.03343, 0.340338, -1.57977)
@@ -53,3 +57,44 @@ suspension_max_force = 10000.0
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.689432, -0.062412)
 shape = SubResource("BoxShape3D_mm2gk")
+
+[node name="look" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2149, 0)
+
+[node name="Camera3D" parent="look" instance=ExtResource("2_5wm5h")]
+transform = Transform3D(0.999339, -0.0313471, 0.0184216, 0.0201797, 0.899642, 0.436162, -0.0302453, -0.435502, 0.89968, -0.257111, 0.992546, 8.29754)
+speed = 12.0
+
+[node name="Hud" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="Hud"]
+layout_mode = 3
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="stearing" type="Sprite2D" parent="Hud/Control"]
+modulate = Color(0.615686, 0.615686, 0.615686, 1)
+self_modulate = Color(1, 1, 1, 0.909804)
+position = Vector2(-244, 391)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("3_gwqv8")
+script = ExtResource("5_tp0cg")
+
+[node name="Up" type="TouchScreenButton" parent="Hud"]
+modulate = Color(0, 0, 0, 0.27451)
+position = Vector2(160, 323)
+scale = Vector2(0.8125, 0.71875)
+shape = SubResource("RectangleShape2D_2e2eq")
+action = "w"
+
+[node name="Down" type="TouchScreenButton" parent="Hud"]
+modulate = Color(0, 0, 0, 0.27451)
+z_index = 2
+position = Vector2(162, 461)
+scale = Vector2(0.8125, 0.71875)
+shape = SubResource("RectangleShape2D_2e2eq")
+action = "s"

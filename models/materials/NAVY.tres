@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://d1sl3k7ktfebf"]
+
+[resource]
+resource_name = "NAVY"
+vertex_color_use_as_albedo = true
+albedo_color = Color(0, 0.160979, 0.270012, 1)
+metallic = 0.4
+roughness = 0.272166

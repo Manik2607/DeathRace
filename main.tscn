@@ -1,45 +1,13 @@
-[gd_scene load_steps=18 format=3 uid="uid://jg7f8seih3b8"]
+[gd_scene load_steps=8 format=3 uid="uid://bynr524dxke3n"]
 
+[ext_resource type="Environment" uid="uid://beamrmo5mxl8v" path="res://Extra/hdr_env.tres" id="1_g2i3g"]
 [ext_resource type="Texture2D" uid="uid://bjki20y2o2s7c" path="res://textures/textures/dark/texture_01.png" id="1_xdod3"]
-[ext_resource type="Shader" uid="uid://cjubaqwomy3ht" path="res://road.tres" id="2_8grik"]
-[ext_resource type="Texture2D" uid="uid://cqgctsi4bfhwk" path="res://textures/TexturesCom_Roads0069_1_seamless_S.jpg" id="3_shlbt"]
-[ext_resource type="Texture2D" uid="uid://bgk85bmyp0lde" path="res://textures/TexturesCom_Roads0069_1_seamless_N.png" id="4_2sakt"]
-[ext_resource type="Texture2D" uid="uid://cxtoftisngj4a" path="res://icon.svg" id="5_y3gxn"]
-[ext_resource type="PackedScene" uid="uid://dayt1nlofg536" path="res://camera_3d.tscn" id="7_hpat2"]
-[ext_resource type="PackedScene" uid="uid://bnaqlnd0442bs" path="res://cars/cybertruck/Cybertruck.tscn" id="8_a3c8c"]
-
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_5j3v5"]
-ground_horizon_color = Color(0.572549, 0.631373, 0.670588, 1)
-sun_angle_max = 156.0
-sun_curve = 0.0630676
-
-[sub_resource type="Sky" id="Sky_03ijk"]
-sky_material = SubResource("ProceduralSkyMaterial_5j3v5")
-
-[sub_resource type="Environment" id="Environment_5rxom"]
-background_mode = 2
-sky = SubResource("Sky_03ijk")
-tonemap_mode = 2
-glow_enabled = true
-fog_light_energy = 2.0
-fog_density = 0.001
+[ext_resource type="PackedScene" uid="uid://d3u7wdfm3p27r" path="res://addons/curve_roads/road.tscn" id="3_6qr24"]
+[ext_resource type="PackedScene" uid="uid://dgo0jm33yjkap" path="res://cars/car.tscn" id="5_6m0di"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xs5b4"]
 albedo_texture = ExtResource("1_xdod3")
 uv1_triplanar = true
-
-[sub_resource type="Curve3D" id="Curve3D_nk3re"]
-_data = {
-"points": PackedVector3Array(-68.8039, 2.51781, 13.9624, 68.8039, -2.51781, -13.9624, -42.4438, 10.8659, -137.042, -42.0125, 0, -22.2419, 42.0125, 0, 22.2419, 112.132, 9.64355, -147.514, 109.974, 15.3225, -88.9676, -109.974, -15.3225, 88.9676, 87.4193, -2.03357, 21.7721, 114.917, 0, -11.1209, -114.917, 0, 11.1209, -0.312721, -3.30115, 223.185, -1.23569, 0, 72.9041, 1.23569, 0, -72.9041, -183.191, 0, 114.447, 13.5923, -13.1322, 45.7195, -13.5923, 13.1322, -45.7195, -97.93, 9.60986, 42.7783, -68.8039, 2.51781, 13.9624, 68.8039, -2.51781, -13.9624, -42.4438, 10.8659, -137.042),
-"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0)
-}
-point_count = 7
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_8gi1j"]
-render_priority = 0
-shader = ExtResource("2_8grik")
-shader_parameter/Albedo = ExtResource("3_shlbt")
-shader_parameter/Normal_Map = ExtResource("4_2sakt")
 
 [sub_resource type="LabelSettings" id="LabelSettings_uvmmd"]
 font_size = 45
@@ -47,20 +15,14 @@ font_size = 45
 [sub_resource type="LabelSettings" id="LabelSettings_qi4lo"]
 font_size = 22
 
-[sub_resource type="BoxMesh" id="BoxMesh_djxtk"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_sual3"]
-size = Vector3(2, 2, 2)
-
 [node name="main" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_5rxom")
+environment = ExtResource("1_g2i3g")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.541635, 0.840614, 0, -0.840614, 0.541635, 0, 8.66696, 0)
 light_energy = 0.78
-shadow_enabled = true
 
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
 material_override = SubResource("StandardMaterial3D_xs5b4")
@@ -69,132 +31,10 @@ use_collision = true
 [node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D"]
 size = Vector3(1000, 1, 1000)
 
-[node name="Path3D" type="Path3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 19.4844, 0)
-curve = SubResource("Curve3D_nk3re")
-
-[node name="road" type="CSGPolygon3D" parent="Path3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.84206, 0)
-use_collision = true
-polygon = PackedVector2Array(0, 0, 15, 0, 15, 0.3, 0, 0.3)
-mode = 2
-path_node = NodePath("..")
-path_interval_type = 0
-path_interval = 3.0
-path_simplify_angle = 2.0
-path_rotation = 2
-path_local = false
-path_continuous_u = true
-path_u_distance = 1.0
-path_joined = true
-material = SubResource("ShaderMaterial_8gi1j")
-
-[node name="road2" type="CSGPolygon3D" parent="Path3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.192177, 9.98118, 0.502342)
-use_collision = true
-polygon = PackedVector2Array(0, 0, 0, 2, 1, 2, 1, 0)
-mode = 2
-path_node = NodePath("..")
-path_interval_type = 0
-path_interval = 4.0
-path_simplify_angle = 1.0
-path_rotation = 2
-path_local = false
-path_continuous_u = true
-path_u_distance = 1.0
-path_joined = true
-
-[node name="road3" type="CSGPolygon3D" parent="Path3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0596466, 10.1141, -0.157455)
-use_collision = true
-polygon = PackedVector2Array(14, 0, 14, 2, 15, 2, 15, 0)
-mode = 2
-path_node = NodePath("..")
-path_interval_type = 0
-path_interval = 4.0
-path_simplify_angle = 1.0
-path_rotation = 2
-path_local = false
-path_continuous_u = true
-path_u_distance = 1.0
-path_joined = true
+[node name="Road" parent="." instance=ExtResource("3_6qr24")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 15.3463, 0)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="Controls" type="Control" parent="CanvasLayer"]
-visible = false
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Controls"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Control" type="Control" parent="CanvasLayer/Controls/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Controls/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="Control2" type="Control" parent="CanvasLayer/Controls/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="up" type="TouchScreenButton" parent="CanvasLayer/Controls/VBoxContainer/HBoxContainer/Control2"]
-position = Vector2(128, 33)
-scale = Vector2(0.65625, 0.671875)
-texture_normal = ExtResource("5_y3gxn")
-action = "w"
-
-[node name="down" type="TouchScreenButton" parent="CanvasLayer/Controls/VBoxContainer/HBoxContainer/Control2"]
-position = Vector2(124, 139)
-scale = Vector2(0.65625, 0.671875)
-texture_normal = ExtResource("5_y3gxn")
-action = "s"
-
-[node name="Control3" type="Control" parent="CanvasLayer/Controls/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="Control4" type="Control" parent="CanvasLayer/Controls/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="right" type="TouchScreenButton" parent="CanvasLayer/Controls/VBoxContainer/HBoxContainer/Control4"]
-position = Vector2(42, 168)
-scale = Vector2(0.65625, 0.671875)
-texture_normal = ExtResource("5_y3gxn")
-action = "break"
-
-[node name="Control5" type="Control" parent="CanvasLayer/Controls/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="left" type="TouchScreenButton" parent="CanvasLayer/Controls/VBoxContainer/HBoxContainer/Control5"]
-position = Vector2(-96, 76)
-scale = Vector2(0.65625, 0.671875)
-texture_normal = ExtResource("5_y3gxn")
-action = "a"
-
-[node name="right" type="TouchScreenButton" parent="CanvasLayer/Controls/VBoxContainer/HBoxContainer/Control5"]
-position = Vector2(108, 69)
-scale = Vector2(0.65625, 0.671875)
-texture_normal = ExtResource("5_y3gxn")
-action = "d"
 
 [node name="setings" type="Panel" parent="CanvasLayer"]
 visible = false
@@ -288,142 +128,5 @@ custom_minimum_size = Vector2(200, 50)
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="car2" parent="." instance=ExtResource("8_a3c8c")]
-transform = Transform3D(0.597877, 0, -0.801588, 0, 1, 0, 0.801588, 0, 0.597877, -189.366, 2.68266, 102.68)
-mass = 100.0
-engine_force_value = 200
-
-[node name="Camera3D" parent="car2" instance=ExtResource("7_hpat2")]
-transform = Transform3D(0.99943, 0.0193714, -0.0276259, 0, 0.818768, 0.574124, 0.0337408, -0.573797, 0.818302, -0.241028, 5.00924, 7.13969)
-
-[node name="box" type="RigidBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -183.31, 12.5373, 98.2643)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="box"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
-mesh = SubResource("BoxMesh_djxtk")
-skeleton = NodePath("../..")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="box"]
-shape = SubResource("BoxShape3D_sual3")
-
-[node name="box2" type="RigidBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -183.31, 12.5373, 95.9927)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="box2"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
-mesh = SubResource("BoxMesh_djxtk")
-skeleton = NodePath("../..")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="box2"]
-shape = SubResource("BoxShape3D_sual3")
-
-[node name="box3" type="RigidBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -183.31, 12.5373, 93.4427)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="box3"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
-mesh = SubResource("BoxMesh_djxtk")
-skeleton = NodePath("../..")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="box3"]
-shape = SubResource("BoxShape3D_sual3")
-
-[node name="box4" type="RigidBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -183.31, 12.5373, 90.8929)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="box4"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
-mesh = SubResource("BoxMesh_djxtk")
-skeleton = NodePath("../..")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="box4"]
-shape = SubResource("BoxShape3D_sual3")
-
-[node name="box6" type="RigidBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -183.31, 14.7784, 95.9927)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="box6"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
-mesh = SubResource("BoxMesh_djxtk")
-skeleton = NodePath("../..")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="box6"]
-shape = SubResource("BoxShape3D_sual3")
-
-[node name="box7" type="RigidBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -183.31, 14.7784, 93.4427)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="box7"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
-mesh = SubResource("BoxMesh_djxtk")
-skeleton = NodePath("../..")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="box7"]
-shape = SubResource("BoxShape3D_sual3")
-
-[node name="box8" type="RigidBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -183.31, 14.7784, 90.8929)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="box8"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
-mesh = SubResource("BoxMesh_djxtk")
-skeleton = NodePath("../..")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="box8"]
-shape = SubResource("BoxShape3D_sual3")
-
-[node name="box9" type="RigidBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -183.31, 17.3093, 95.9927)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="box9"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
-mesh = SubResource("BoxMesh_djxtk")
-skeleton = NodePath("../..")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="box9"]
-shape = SubResource("BoxShape3D_sual3")
-
-[node name="box10" type="RigidBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -183.31, 17.3093, 93.4427)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="box10"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
-mesh = SubResource("BoxMesh_djxtk")
-skeleton = NodePath("../..")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="box10"]
-shape = SubResource("BoxShape3D_sual3")
-
-[node name="box12" type="RigidBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -183.31, 19.6392, 93.4427)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="box12"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
-mesh = SubResource("BoxMesh_djxtk")
-skeleton = NodePath("../..")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="box12"]
-shape = SubResource("BoxShape3D_sual3")
-
-[node name="box11" type="RigidBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -183.31, 17.3093, 90.8929)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="box11"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
-mesh = SubResource("BoxMesh_djxtk")
-skeleton = NodePath("../..")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="box11"]
-shape = SubResource("BoxShape3D_sual3")
-
-[node name="box5" type="RigidBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -183.31, 12.5373, 88.5645)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="box5"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
-mesh = SubResource("BoxMesh_djxtk")
-skeleton = NodePath("../..")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="box5"]
-shape = SubResource("BoxShape3D_sual3")
+[node name="car" parent="." instance=ExtResource("5_6m0di")]
+transform = Transform3D(0.660565, 0, -0.750769, 0, 1, 0, 0.750769, 0, 0.660565, 70.9038, 29.123, 26.271)

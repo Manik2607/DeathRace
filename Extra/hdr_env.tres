@@ -1,0 +1,20 @@
+[gd_resource type="Environment" load_steps=4 format=3 uid="uid://beamrmo5mxl8v"]
+
+[ext_resource type="Texture2D" uid="uid://dyn6nvs4h53pg" path="res://Extra/sunflowers_puresky_1k.hdr" id="1_u86tu"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_nxa7y"]
+panorama = ExtResource("1_u86tu")
+
+[sub_resource type="Sky" id="Sky_50dl4"]
+sky_material = SubResource("PanoramaSkyMaterial_nxa7y")
+
+[resource]
+background_mode = 2
+sky = SubResource("Sky_50dl4")
+tonemap_mode = 3
+sdfgi_use_occlusion = true
+glow_enabled = true
+glow_normalized = true
+glow_bloom = 0.07
+volumetric_fog_anisotropy = -0.15
+adjustment_brightness = 0.71

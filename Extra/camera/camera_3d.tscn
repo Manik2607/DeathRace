@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://Extra/camera/CameraFollow.gd" id="1_pcwpe"]
+
+[node name="Camera3D" type="Camera3D"]
+top_level = true
+current = true
+script = ExtResource("1_pcwpe")
+target_distance = 7.0
+target_height = 5.0
+speed = 10.0

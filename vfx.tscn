@@ -1,0 +1,284 @@
+[gd_scene load_steps=12 format=3 uid="uid://bp7vfygdcboxb"]
+
+[ext_resource type="Shader" path="res://cars/speedLines.gdshader" id="1_kqxme"]
+[ext_resource type="Texture2D" uid="uid://cxtoftisngj4a" path="res://icon.svg" id="2_koady"]
+[ext_resource type="Shader" path="res://cars/viniat.gdshader" id="3_h405b"]
+[ext_resource type="Script" path="res://cars/stearing.gd" id="5_b2s3h"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_2q17d"]
+noise_type = 2
+frequency = 0.144
+fractal_type = 0
+cellular_distance_function = 3
+cellular_jitter = 0.363
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_bqwjy"]
+noise = SubResource("FastNoiseLite_2q17d")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ob336"]
+shader = ExtResource("1_kqxme")
+shader_parameter/line_color = Color(1, 1, 1, 1)
+shader_parameter/line_count = 1.45
+shader_parameter/line_density = 0.518
+shader_parameter/line_faloff = 0.508
+shader_parameter/mask_size = 0.092
+shader_parameter/mask_edge = 0.5
+shader_parameter/animation_speed = 14.888
+shader_parameter/noise = SubResource("NoiseTexture2D_bqwjy")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_eggye"]
+shader = ExtResource("3_h405b")
+shader_parameter/r_displacement = Vector2(1, 0)
+shader_parameter/g_displacement = Vector2(0, 0)
+shader_parameter/b_displacement = Vector2(-1, 0)
+
+[sub_resource type="Shader" id="Shader_n75es"]
+code = "/*
+	放射状ブラーエフェクト by あるる（きのもと　結衣） @arlez80
+	Radial Blur Effect by Yui Kinomoto
+
+	MIT License
+*/
+shader_type canvas_item;
+
+// 発射中央部
+uniform vec2 blur_center = vec2( 0.5, 0.5 );
+// ブラー強度
+uniform float blur_power : hint_range( 0.0, 1.0 ) = 0.01;
+// サンプリング回数
+uniform int sampling_count : hint_range( 1, 64 ) = 10;
+uniform sampler2D SCREEN_TEXTURE : hint_screen_texture, filter_linear_mipmap;
+void fragment( )
+{
+	
+	vec2 direction = SCREEN_UV - blur_center;
+	vec3 c = vec3( 0.0, 0.0, 0.0 );
+	float f = 1.0 / float( sampling_count );
+	for( int i=0; i < sampling_count; i++ ) {
+		c += texture( SCREEN_TEXTURE, SCREEN_UV - blur_power * direction * float(i) ).rgb * f;
+	}
+	COLOR.rgb = c;
+}
+
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1kh0i"]
+shader = SubResource("Shader_n75es")
+shader_parameter/blur_center = Vector2(0.5, 0.6)
+shader_parameter/blur_power = 0.01
+shader_parameter/sampling_count = 6
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_parwu"]
+size = Vector2(140, 140)
+
+[node name="vfx" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Speed lines" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_ob336")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_koady")
+
+[node name="Chromatic" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_eggye")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_koady")
+
+[node name="motion blur" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_1kh0i")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_koady")
+
+[node name="Hud" type="CanvasLayer" parent="."]
+
+[node name="speed" type="Label" parent="Hud"]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="Panel" type="Panel" parent="Hud"]
+visible = false
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -493.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="Hud/Panel"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 35.0
+offset_top = -63.0
+offset_right = 151.0
+offset_bottom = -24.0
+grow_vertical = 0
+text = "Back
+"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Hud/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 28.0
+offset_bottom = -81.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="EnginForce" type="MarginContainer" parent="Hud/Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_right = 30
+
+[node name="Control" type="HBoxContainer" parent="Hud/Panel/VBoxContainer/EnginForce"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Hud/Panel/VBoxContainer/EnginForce/Control"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "Speed"
+
+[node name="HSlider" type="HSlider" parent="Hud/Panel/VBoxContainer/EnginForce/Control"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+max_value = 3000.0
+
+[node name="Stearspeed" type="MarginContainer" parent="Hud/Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_right = 30
+
+[node name="Control" type="HBoxContainer" parent="Hud/Panel/VBoxContainer/Stearspeed"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Hud/Panel/VBoxContainer/Stearspeed/Control"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "stear Speed"
+
+[node name="HSlider" type="HSlider" parent="Hud/Panel/VBoxContainer/Stearspeed/Control"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+max_value = 10.0
+step = 0.01
+
+[node name="blur" type="MarginContainer" parent="Hud/Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_right = 30
+
+[node name="Control" type="HBoxContainer" parent="Hud/Panel/VBoxContainer/blur"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Hud/Panel/VBoxContainer/blur/Control"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "motion  blur
+"
+
+[node name="HSlider" type="HSlider" parent="Hud/Panel/VBoxContainer/blur/Control"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+max_value = 1.0
+step = 0.001
+value = 0.015
+
+[node name="Button" type="Button" parent="Hud"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -77.0
+offset_bottom = 37.0
+grow_horizontal = 0
+text = "HUD"
+
+[node name="controlls" type="CanvasLayer" parent="Hud"]
+
+[node name="left" type="TouchScreenButton" parent="Hud/controlls"]
+modulate = Color(0, 0, 0, 0.27451)
+z_index = 2
+position = Vector2(746, 389)
+scale = Vector2(0.8125, 0.71875)
+texture_normal = ExtResource("2_koady")
+texture_pressed = ExtResource("2_koady")
+shape = SubResource("RectangleShape2D_parwu")
+action = "a"
+
+[node name="right" type="TouchScreenButton" parent="Hud/controlls"]
+modulate = Color(0, 0, 0, 0.27451)
+z_index = 2
+position = Vector2(937, 387)
+scale = Vector2(0.8125, 0.71875)
+texture_normal = ExtResource("2_koady")
+texture_pressed = ExtResource("2_koady")
+shape = SubResource("RectangleShape2D_parwu")
+action = "d"
+
+[node name="break" type="TouchScreenButton" parent="Hud/controlls"]
+modulate = Color(0, 0, 0, 0.27451)
+z_index = 2
+position = Vector2(1039, 220)
+scale = Vector2(0.53125, 0.554688)
+texture_normal = ExtResource("2_koady")
+texture_pressed = ExtResource("2_koady")
+shape = SubResource("RectangleShape2D_parwu")
+action = "break"
+
+[node name="Up" type="TouchScreenButton" parent="Hud/controlls"]
+modulate = Color(0, 0, 0, 0.27451)
+position = Vector2(160, 323)
+scale = Vector2(0.8125, 0.71875)
+texture_normal = ExtResource("2_koady")
+texture_pressed = ExtResource("2_koady")
+shape = SubResource("RectangleShape2D_parwu")
+action = "w"
+
+[node name="Down" type="TouchScreenButton" parent="Hud/controlls"]
+modulate = Color(0, 0, 0, 0.27451)
+z_index = 2
+position = Vector2(162, 461)
+scale = Vector2(0.8125, 0.71875)
+texture_normal = ExtResource("2_koady")
+texture_pressed = ExtResource("2_koady")
+shape = SubResource("RectangleShape2D_parwu")
+action = "s"
+
+[node name="stearing" type="Sprite2D" parent="Hud/controlls"]
+modulate = Color(0.615686, 0.615686, 0.615686, 1)
+self_modulate = Color(1, 1, 1, 0.909804)
+position = Vector2(820, 359)
+scale = Vector2(2, 2)
+texture = ExtResource("2_koady")
+script = ExtResource("5_b2s3h")
+
+[connection signal="button_down" from="Hud/Panel/Button" to="Hud" method="_on_button_button_down"]
+[connection signal="pressed" from="Hud/Button" to="Hud" method="_on_button_pressed"]

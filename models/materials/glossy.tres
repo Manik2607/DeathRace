@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://d2hwx0jx5r8w8"]
+
+[resource]
+resource_name = "glossy"
+vertex_color_use_as_albedo = true
+albedo_color = Color(0, 0.86034, 0.906333, 1)
+metallic = 0.4
+roughness = 0.272166

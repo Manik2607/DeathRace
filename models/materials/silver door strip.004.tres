@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://f8wokq6cpf0q"]
+
+[resource]
+resource_name = "silver door strip.004"
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.906332, 0.881786, 0.611314, 1)
+metallic = 0.4
+roughness = 0.272166

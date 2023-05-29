@@ -6,7 +6,7 @@ uid="uid://cwm6kolv5y5p4"
 path.s3tc="res://.godot/imported/glass_crack_baseColor.png-18fa26d126b5860bb29f9d419abe9bcb.s3tc.ctex"
 path.etc2="res://.godot/imported/glass_crack_baseColor.png-18fa26d126b5860bb29f9d419abe9bcb.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc", "etc2"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
@@ -18,9 +18,9 @@ dest_files=["res://.godot/imported/glass_crack_baseColor.png-18fa26d126b5860bb29
 [params]
 
 compress/mode=2
+compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
-compress/bptc_ldr=0
 compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=true

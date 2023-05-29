@@ -1,10 +1,15 @@
-[gd_scene load_steps=23 format=3 uid="uid://bnaqlnd0442bs"]
+[gd_scene load_steps=24 format=3 uid="uid://bnaqlnd0442bs"]
 
-[ext_resource type="PackedScene" uid="uid://4p4qcoogibct" path="res://cars/BaseCar.tscn" id="1_pjd7b"]
+[ext_resource type="PackedScene" uid="uid://cjvqxx7sn62vx" path="res://cars/BaseCar.tscn" id="1_pjd7b"]
 [ext_resource type="PackedScene" uid="uid://bkbiix5o0x273" path="res://models/wheels.tscn" id="2_mr4g0"]
 [ext_resource type="Texture2D" uid="uid://buxswxd7mj3l5" path="res://cars/cybertruck/textures/gray_baseColor.png" id="4_brq65"]
 [ext_resource type="Texture2D" uid="uid://cwjgxch1i0by" path="res://cars/cybertruck/textures/gray_metallicRoughness.png" id="5_eki0b"]
 [ext_resource type="Texture2D" uid="uid://wxhb5hq2sk1q" path="res://cars/cybertruck/textures/glass_baseColor.png" id="6_emb8d"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_513ki"]
+friction = 0.24
+bounce = 0.49
+absorbent = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0xupj"]
 resource_name = "gray"
@@ -249,21 +254,31 @@ shadow_mesh = SubResource("ArrayMesh_xi8gi")
 
 [node name="car" instance=ExtResource("1_pjd7b")]
 mass = 50.0
+physics_material_override = SubResource("PhysicsMaterial_513ki")
+engine_force_value = 120
 
 [node name="wheal0" parent="." index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.03343, 0.552333, -1.98359)
+use_as_traction = false
 wheel_roll_influence = 1.0
 wheel_radius = 0.45
 wheel_rest_length = 0.3
+wheel_friction_slip = 4.0
+damping_compression = 0.85
+damping_relaxation = 0.9
 
 [node name="wheels" parent="wheal0" index="0" instance=ExtResource("2_mr4g0")]
 transform = Transform3D(-1.083, 0, -9.46789e-08, 0, 1.083, 0, 9.46789e-08, 0, -1.083, 0, 0, 0)
 
 [node name="wheal1" parent="." index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.02622, 0.552333, -1.98359)
+use_as_traction = false
 wheel_roll_influence = 1.0
 wheel_radius = 0.45
 wheel_rest_length = 0.3
+wheel_friction_slip = 4.0
+damping_compression = 0.85
+damping_relaxation = 0.9
 
 [node name="wheels2" parent="wheal1" index="0" instance=ExtResource("2_mr4g0")]
 transform = Transform3D(1.083, 0, 0, 0, 1.083, 0, 0, 0, 1.083, 0, 0, 0)
@@ -273,6 +288,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.03343, 0.546665, 1.76664)
 wheel_roll_influence = 1.0
 wheel_radius = 0.45
 wheel_rest_length = 0.3
+wheel_friction_slip = 4.0
+damping_compression = 0.85
+damping_relaxation = 0.9
 
 [node name="wheels3" parent="wheal2" index="0" instance=ExtResource("2_mr4g0")]
 transform = Transform3D(-1.083, 0, -9.46789e-08, 0, 1.083, 0, 9.46789e-08, 0, -1.083, 0, 0, 0)
@@ -282,6 +300,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.02622, 0.546665, 1.76664)
 wheel_roll_influence = 1.0
 wheel_radius = 0.45
 wheel_rest_length = 0.3
+wheel_friction_slip = 4.0
+damping_compression = 0.85
+damping_relaxation = 0.9
 
 [node name="wheels4" parent="wheal3" index="0" instance=ExtResource("2_mr4g0")]
 transform = Transform3D(1.083, 0, 0, 0, 1.083, 0, 0, 0, 1.083, 0, 0, 0)
@@ -334,8 +355,12 @@ light_energy = 20.0
 spot_range = 71.007
 spot_angle = 28.61
 
-[node name="Hud" type="CanvasLayer" parent="." index="8"]
+[node name="look" parent="." index="8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.39134, -0.298952)
 
-[node name="speed" type="Label" parent="Hud" index="0"]
-offset_right = 40.0
-offset_bottom = 23.0
+[node name="Camera3D" parent="look" index="0"]
+target_distance = 6.0
+target_height = 1.5
+
+[node name="motion blur" parent="." index="11"]
+metadata/_edit_lock_ = true
