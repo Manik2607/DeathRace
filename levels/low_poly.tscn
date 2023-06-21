@@ -20,7 +20,5 @@ directional_shadow_max_distance = 200.0
 [node name="car" parent="." instance=ExtResource("2_xinl8")]
 transform = Transform3D(0.778813, 0, 0.627256, 0, 1, 0, -0.627256, 0, 0.778813, -6.7747, 5.27712, 29.9163)
 mass = 100.0
-STEER_LIMIT = 0.8
-engine_force_value = 210
 
 [node name="map" parent="." instance=ExtResource("2_lpgv1")]

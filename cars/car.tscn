@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://dxoigrqfwlsgi" path="res://models/body.tscn" id="3_oaeti"]
 
 [node name="car" instance=ExtResource("1_tfbne")]
+mass = 60.0
 
 [node name="wheels" parent="wheal0" index="0" instance=ExtResource("2_evbxi")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
@@ -21,7 +22,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 [node name="bugatti" parent="." index="5" instance=ExtResource("3_oaeti")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.575238, 0)
 
+[node name="look" parent="." index="6"]
+transform = Transform3D(0.999945, 0.00279329, -0.0101424, 0, 0.964105, 0.26552, 0.01052, -0.265506, 0.964052, -0.048, 0.797825, -0.09)
+
 [node name="Camera3D" parent="look" index="0"]
-target_distance = 5.0
-target_height = 1.0
+transform = Transform3D(0.999339, -0.0313471, 0.0184216, 0.0201797, 0.899642, 0.436162, -0.0302453, -0.435502, 0.89968, -0.257111, 0.992546, 8.29754)
+target_distance = 4.0
+target_height = 2.0
 speed = 10.0

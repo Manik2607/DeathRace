@@ -124,7 +124,7 @@ void sky() {
 
 
 // UVFunc:12
-	vec2 n_out12p0 = fma(vec2(n_out14p0), n_out18p0, n_out11p0);
+	vec2 n_out12p0 = vec2(n_out14p0) * n_out18p0 + n_out11p0;
 
 
 	vec4 n_out9p0;

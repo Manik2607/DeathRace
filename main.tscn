@@ -1,9 +1,19 @@
-[gd_scene load_steps=8 format=3 uid="uid://bynr524dxke3n"]
+[gd_scene load_steps=10 format=3 uid="uid://bynr524dxke3n"]
 
-[ext_resource type="Environment" uid="uid://beamrmo5mxl8v" path="res://Extra/hdr_env.tres" id="1_g2i3g"]
 [ext_resource type="Texture2D" uid="uid://bjki20y2o2s7c" path="res://textures/textures/dark/texture_01.png" id="1_xdod3"]
 [ext_resource type="PackedScene" uid="uid://d3u7wdfm3p27r" path="res://addons/curve_roads/road.tscn" id="3_6qr24"]
 [ext_resource type="PackedScene" uid="uid://dgo0jm33yjkap" path="res://cars/car.tscn" id="5_6m0di"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_p1kyt"]
+
+[sub_resource type="Sky" id="Sky_pgf7c"]
+sky_material = SubResource("ProceduralSkyMaterial_p1kyt")
+
+[sub_resource type="Environment" id="Environment_aumfp"]
+background_mode = 2
+sky = SubResource("Sky_pgf7c")
+ambient_light_source = 3
+tonemap_mode = 3
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xs5b4"]
 albedo_texture = ExtResource("1_xdod3")
@@ -18,11 +28,13 @@ font_size = 22
 [node name="main" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = ExtResource("1_g2i3g")
+environment = SubResource("Environment_aumfp")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.541635, 0.840614, 0, -0.840614, 0.541635, 0, 8.66696, 0)
-light_energy = 0.78
+light_color = Color(1, 0.996078, 0.984314, 1)
+light_energy = 0.8
+shadow_reverse_cull_face = true
 
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
 material_override = SubResource("StandardMaterial3D_xs5b4")
@@ -32,7 +44,7 @@ use_collision = true
 size = Vector3(1000, 1, 1000)
 
 [node name="Road" parent="." instance=ExtResource("3_6qr24")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 15.3463, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.0844, 15.3463, 1.36317)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -129,4 +141,5 @@ layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="car" parent="." instance=ExtResource("5_6m0di")]
-transform = Transform3D(0.660565, 0, -0.750769, 0, 1, 0, 0.750769, 0, 0.660565, 70.9038, 29.123, 26.271)
+transform = Transform3D(0.92418, 0, -0.381958, 0, 1, 0, 0.381958, 0, 0.92418, -124.195, 41.6251, 53.2459)
+mass = 70.0

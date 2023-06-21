@@ -14,8 +14,12 @@ config/name="DeathRace"
 run/main_scene="res://UI/main_menu.tscn"
 config/features=PackedStringArray("4.0", "GL Compatibility")
 run/max_fps=120
-boot_splash/bg_color=Color(0.0313726, 0.121569, 0.298039, 1)
+boot_splash/bg_color=Color(0.0352941, 0.0470588, 0.105882, 1)
 config/icon="res://icon.svg"
+
+[autoload]
+
+Debug="*res://Extra/debug.tscn"
 
 [display]
 
@@ -72,13 +76,11 @@ r={
 
 pointing/emulate_touch_from_mouse=true
 
-[physics]
-
-3d/run_on_separate_thread=true
-
 [rendering]
 
 renderer/rendering_method="mobile"
+driver/threads/thread_model=2
 textures/vram_compression/import_etc2_astc=true
-anti_aliasing/quality/msaa_3d=1
-occlusion_culling/use_occlusion_culling=true
+textures/default_filters/anisotropic_filtering_level=0
+scaling_3d/scale=0.7
+anti_aliasing/quality/screen_space_aa=1

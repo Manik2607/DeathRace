@@ -1,51 +1,19 @@
-[gd_scene load_steps=12 format=3 uid="uid://2mafbyjwdtjf"]
+[gd_scene load_steps=6 format=3 uid="uid://2mafbyjwdtjf"]
 
 [ext_resource type="Material" uid="uid://bx6qeabdhq2s" path="res://textures/materials/dark/material_01.tres" id="1_kwign"]
 [ext_resource type="PackedScene" uid="uid://bnaqlnd0442bs" path="res://cars/cybertruck/Cybertruck.tscn" id="2_g8nns"]
 [ext_resource type="Material" uid="uid://dn16yhnqtqh7i" path="res://textures/materials/orange/material_02.tres" id="2_mjtbq"]
 [ext_resource type="PackedScene" uid="uid://cppklosq84psk" path="res://models/maps/terrain.tscn" id="6_ou6e0"]
 
-[sub_resource type="Gradient" id="Gradient_6tqwo"]
-offsets = PackedFloat32Array(0.404372, 1)
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_6kr7c"]
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_cyaqp"]
-seamless = true
-color_ramp = SubResource("Gradient_6tqwo")
-noise = SubResource("FastNoiseLite_6kr7c")
-
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_g51ai"]
-sky_top_color = Color(0.301961, 0.533333, 0.576471, 1)
-sky_horizon_color = Color(0.913725, 0.92549, 0.94902, 1)
-sky_curve = 0.135188
-sky_cover = SubResource("NoiseTexture2D_cyaqp")
-
-[sub_resource type="Sky" id="Sky_gokdk"]
-sky_material = SubResource("ProceduralSkyMaterial_g51ai")
-
-[sub_resource type="Environment" id="Environment_ch0uw"]
-background_mode = 2
-sky = SubResource("Sky_gokdk")
-ssao_enabled = true
-ssao_radius = 8.27
-ssao_intensity = 17.46
-ssil_enabled = true
-glow_enabled = true
-fog_enabled = true
-fog_light_color = Color(0.733333, 0.780392, 0.858824, 1)
-fog_density = 0.001
-volumetric_fog_emission = Color(0.34902, 0.34902, 0.34902, 1)
-
 [sub_resource type="BoxMesh" id="BoxMesh_gv1xc"]
 
 [node name="High Sky" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_ch0uw")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866023, -0.433016, 0.250001, 0.499921, -0.758968, 0.41719, 0.0090927, 0.486277, 0.873758, 0, 5.94899, 0)
+visible = false
 shadow_enabled = true
 
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
@@ -109,7 +77,6 @@ size = Vector3(16.014, 1.46172, 21.4679)
 
 [node name="car" parent="." instance=ExtResource("2_g8nns")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.891251, 0)
-engine_force_value = 50
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.9992, 0.549023, 0)

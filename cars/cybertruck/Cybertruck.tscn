@@ -255,7 +255,6 @@ shadow_mesh = SubResource("ArrayMesh_xi8gi")
 [node name="car" instance=ExtResource("1_pjd7b")]
 mass = 50.0
 physics_material_override = SubResource("PhysicsMaterial_513ki")
-engine_force_value = 120
 
 [node name="wheal0" parent="." index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.03343, 0.552333, -1.98359)
@@ -361,6 +360,3 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.39134, -0.298952)
 [node name="Camera3D" parent="look" index="0"]
 target_distance = 6.0
 target_height = 1.5
-
-[node name="motion blur" parent="." index="11"]
-metadata/_edit_lock_ = true
