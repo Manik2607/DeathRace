@@ -1,8 +1,8 @@
 [gd_scene load_steps=12 format=3 uid="uid://bp7vfygdcboxb"]
 
-[ext_resource type="Shader" path="res://cars/speedLines.gdshader" id="1_kqxme"]
-[ext_resource type="Texture2D" uid="uid://cxtoftisngj4a" path="res://icon.svg" id="2_koady"]
-[ext_resource type="Shader" path="res://cars/viniat.gdshader" id="3_h405b"]
+[ext_resource type="Shader" path="res://vfx/speedLines.gdshader" id="1_kqxme"]
+[ext_resource type="Shader" path="res://vfx/viniat.gdshader" id="3_h405b"]
+[ext_resource type="Texture2D" uid="uid://c1yr54hqel7dn" path="res://UI/Images/SteeringWheel.png" id="3_wyfa4"]
 [ext_resource type="Script" path="res://cars/stearing.gd" id="5_b2s3h"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_2q17d"]
@@ -79,7 +79,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Speed lines" type="TextureRect" parent="."]
+[node name="Speed lines" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_ob336")
 layout_mode = 1
 anchors_preset = 15
@@ -87,9 +87,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_koady")
 
-[node name="Chromatic" type="TextureRect" parent="."]
+[node name="Chromatic" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_eggye")
 layout_mode = 1
 anchors_preset = 15
@@ -97,9 +96,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_koady")
 
-[node name="motion blur" type="TextureRect" parent="."]
+[node name="motion blur" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_1kh0i")
 layout_mode = 1
 anchors_preset = 15
@@ -107,7 +105,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_koady")
 
 [node name="Hud" type="CanvasLayer" parent="."]
 
@@ -216,8 +213,10 @@ value = 0.015
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -77.0
-offset_bottom = 37.0
+offset_left = -102.0
+offset_top = 25.0
+offset_right = -25.0
+offset_bottom = 62.0
 grow_horizontal = 0
 text = "HUD"
 
@@ -228,8 +227,6 @@ modulate = Color(0, 0, 0, 0.27451)
 z_index = 2
 position = Vector2(746, 389)
 scale = Vector2(0.8125, 0.71875)
-texture_normal = ExtResource("2_koady")
-texture_pressed = ExtResource("2_koady")
 shape = SubResource("RectangleShape2D_parwu")
 action = "a"
 
@@ -238,8 +235,6 @@ modulate = Color(0, 0, 0, 0.27451)
 z_index = 2
 position = Vector2(937, 387)
 scale = Vector2(0.8125, 0.71875)
-texture_normal = ExtResource("2_koady")
-texture_pressed = ExtResource("2_koady")
 shape = SubResource("RectangleShape2D_parwu")
 action = "d"
 
@@ -248,8 +243,6 @@ modulate = Color(0, 0, 0, 0.27451)
 z_index = 2
 position = Vector2(1039, 220)
 scale = Vector2(0.53125, 0.554688)
-texture_normal = ExtResource("2_koady")
-texture_pressed = ExtResource("2_koady")
 shape = SubResource("RectangleShape2D_parwu")
 action = "break"
 
@@ -257,8 +250,6 @@ action = "break"
 modulate = Color(0, 0, 0, 0.27451)
 position = Vector2(160, 323)
 scale = Vector2(0.8125, 0.71875)
-texture_normal = ExtResource("2_koady")
-texture_pressed = ExtResource("2_koady")
 shape = SubResource("RectangleShape2D_parwu")
 action = "w"
 
@@ -267,8 +258,6 @@ modulate = Color(0, 0, 0, 0.27451)
 z_index = 2
 position = Vector2(162, 461)
 scale = Vector2(0.8125, 0.71875)
-texture_normal = ExtResource("2_koady")
-texture_pressed = ExtResource("2_koady")
 shape = SubResource("RectangleShape2D_parwu")
 action = "s"
 
@@ -276,8 +265,8 @@ action = "s"
 modulate = Color(0.615686, 0.615686, 0.615686, 1)
 self_modulate = Color(1, 1, 1, 0.909804)
 position = Vector2(820, 359)
-scale = Vector2(2, 2)
-texture = ExtResource("2_koady")
+scale = Vector2(0.625, 0.625)
+texture = ExtResource("3_wyfa4")
 script = ExtResource("5_b2s3h")
 
 [connection signal="button_down" from="Hud/Panel/Button" to="Hud" method="_on_button_button_down"]

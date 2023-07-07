@@ -1,6 +1,6 @@
 [gd_scene load_steps=24 format=3 uid="uid://bnaqlnd0442bs"]
 
-[ext_resource type="PackedScene" uid="uid://cjvqxx7sn62vx" path="res://cars/BaseCar.tscn" id="1_pjd7b"]
+[ext_resource type="PackedScene" uid="uid://cjvqxx7sn62vx" path="res://cars/Base Car/BaseCar.tscn" id="1_pjd7b"]
 [ext_resource type="PackedScene" uid="uid://bkbiix5o0x273" path="res://models/wheels.tscn" id="2_mr4g0"]
 [ext_resource type="Texture2D" uid="uid://buxswxd7mj3l5" path="res://cars/cybertruck/textures/gray_baseColor.png" id="4_brq65"]
 [ext_resource type="Texture2D" uid="uid://cwjgxch1i0by" path="res://cars/cybertruck/textures/gray_metallicRoughness.png" id="5_eki0b"]
