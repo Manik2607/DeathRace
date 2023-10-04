@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://doo78ojdk6qju"]
+
+[ext_resource type="PackedScene" uid="uid://bnaqlnd0442bs" path="res://cars/cybertruck/Cybertruck.tscn" id="1_kfkdp"]
+[ext_resource type="Environment" uid="uid://beamrmo5mxl8v" path="res://Extra/hdr_env.tres" id="2_8miy4"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_jgco2"]
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_xveqj"]
+data = PackedVector3Array(1, 0, 1, -1, 0, 1, 1, 0, -1, -1, 0, 1, -1, 0, -1, 1, 0, -1)
+
+[node name="t1" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, 0, -0.0670781, 0)
+mesh = SubResource("PlaneMesh_jgco2")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_xveqj")
+
+[node name="car2" parent="." instance=ExtResource("1_kfkdp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.36906, -0.0422696, 0)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("2_8miy4")

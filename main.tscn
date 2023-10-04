@@ -4,15 +4,16 @@
 [ext_resource type="Material" uid="uid://ddal25jay8fq1" path="res://textures/materials/purple/material_01.tres" id="2_l2pdt"]
 [ext_resource type="PackedScene" uid="uid://dgo0jm33yjkap" path="res://cars/car.tscn" id="5_6m0di"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_p1kyt"]
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_0rmvc"]
 
-[sub_resource type="Sky" id="Sky_pgf7c"]
-sky_material = SubResource("ProceduralSkyMaterial_p1kyt")
+[sub_resource type="Sky" id="Sky_v5aih"]
+sky_material = SubResource("ProceduralSkyMaterial_0rmvc")
 
-[sub_resource type="Environment" id="Environment_aumfp"]
+[sub_resource type="Environment" id="Environment_xivrx"]
 background_mode = 2
-sky = SubResource("Sky_pgf7c")
+sky = SubResource("Sky_v5aih")
 ambient_light_source = 3
+ambient_light_color = Color(0.47451, 0.47451, 0.47451, 1)
 tonemap_mode = 3
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xs5b4"]
@@ -29,13 +30,13 @@ font_size = 22
 [node name="main" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_aumfp")
+environment = SubResource("Environment_xivrx")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.541635, 0.840614, 0, -0.840614, 0.541635, 0, 8.66696, 0)
+transform = Transform3D(-0.00945952, -0.999955, 2.06732e-08, 0.541611, -0.00512359, 0.840614, -0.840576, 0.00795181, 0.541635, 0, 8.66696, 0)
 light_color = Color(1, 0.996078, 0.984314, 1)
 light_energy = 0.8
-shadow_reverse_cull_face = true
+shadow_enabled = true
 
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
 material_override = SubResource("StandardMaterial3D_xs5b4")
@@ -139,7 +140,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="car" parent="." instance=ExtResource("5_6m0di")]
-transform = Transform3D(0.92418, 0, -0.381958, 0, 1, 0, 0.381958, 0, 0.92418, -0.761513, 0.685165, -2.51752)
+transform = Transform3D(0.92418, 0, -0.381958, 0, 1, 0, 0.381958, 0, 0.92418, -1.14347, 0.685165, -1.59334)
 mass = 70.0
 
 [node name="boxes" type="CSGCombiner3D" parent="."]

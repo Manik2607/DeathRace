@@ -1,7 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://dpsvnv081nr5c"]
+[gd_scene load_steps=10 format=3 uid="uid://dpsvnv081nr5c"]
 
 [ext_resource type="Script" path="res://UI/main_menu.gd" id="1_gq6jr"]
 [ext_resource type="PackedScene" uid="uid://bynr524dxke3n" path="res://main.tscn" id="2_h2yxr"]
+[ext_resource type="PackedScene" uid="uid://doo78ojdk6qju" path="res://Test/t_1.tscn" id="3_5vnoe"]
+[ext_resource type="PackedScene" uid="uid://dier3hb5qx6sh" path="res://levels/mario.tscn" id="4_bmuri"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3nbib"]
 bg_color = Color(0.180392, 0.180392, 0.180392, 1)
@@ -53,6 +55,8 @@ grow_vertical = 2
 theme = SubResource("Theme_ts566")
 script = ExtResource("1_gq6jr")
 main_scene = ExtResource("2_h2yxr")
+test_scenes_0 = ExtResource("3_5vnoe")
+test_scenes_1 = ExtResource("4_bmuri")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1
@@ -106,4 +110,25 @@ size_flags_vertical = 3
 text = "Quit
 "
 
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_stretch_ratio = 1.2
+
+[node name="Test1" type="Button" parent="Panel/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/outline_size = 0
+theme_override_font_sizes/font_size = 25
+text = "Test 1"
+
+[node name="Test2" type="Button" parent="Panel/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/outline_size = 0
+theme_override_font_sizes/font_size = 25
+text = "Test 2"
+
 [connection signal="button_down" from="Panel/VBoxContainer/Button" to="." method="_on_button_button_down"]
+[connection signal="button_down" from="Panel/VBoxContainer/HBoxContainer/Test1" to="." method="_on_test_1_button_down"]
+[connection signal="button_down" from="Panel/VBoxContainer/HBoxContainer/Test2" to="." method="_on_test_2_button_down"]

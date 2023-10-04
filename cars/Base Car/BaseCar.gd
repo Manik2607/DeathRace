@@ -3,20 +3,30 @@ extends VehicleBody3D
 
 @export var STEER_SPEED = 1.5
 @export var STEER_LIMIT = 0.6
-var steer_target = 0
 @export var max_speed = 200
-@export var Blur_Amount=0.02
+@export var blur_amount=0.012
 @export var force_curve : Curve
 
-var stear_mode = 1
+enum modes{
+	keyboad,
+	stearing 
+}
+var stear_mode = modes.keyboad
+var steer_target = 0
+
+@export var smoke_emiters : Array[GPUParticles3D]
+func _ready():
+	if OS.get_name() == "Android":
+		stear_mode = modes.stearing
+		
 func _physics_process(delta):
 #	var speed=-$wheal3.get_rpm()*0.377*$wheal3.wheel_radius
 	var speed=linear_velocity.length()*3.6
 	traction(speed)
-#	$Hud/speed.text=str(round(speed))
+	$Hud/speed.text=str(round(speed))
 	
-#	$"motion blur".material.set("shader_parameter/blur_power",speed*Blur_Amount*delta)
-#	$"Speed lines".material.set("shader_parameter/mask_edge",remap(speed,30,200,1,0.4))
+	$"vfx/motion blur".material.set("shader_parameter/blur_power",clamp(remap(speed,90,180,0,blur_amount),0,0.2))
+	$"vfx/Speed lines".material.set("shader_parameter/mask_edge",remap(speed,40,180,1,0.4))
 	if Input.is_action_pressed("r"):
 		get_tree().reload_current_scene()
 		
@@ -41,10 +51,14 @@ func _physics_process(delta):
 		brake=3
 		$wheal2.wheel_friction_slip=0.8
 		$wheal3.wheel_friction_slip=0.8
+		for i in smoke_emiters:
+			i.emitting = true
 	else:
 		$wheal2.wheel_friction_slip=3
 		$wheal3.wheel_friction_slip=3
 		brake=0
+		for i in smoke_emiters:
+			i.emitting = false
 	if stear_mode:
 		steering = $Hud/Control/stearing.steer_amount
 	else:
