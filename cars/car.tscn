@@ -4,9 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://bkbiix5o0x273" path="res://models/wheels.tscn" id="2_evbxi"]
 [ext_resource type="PackedScene" uid="uid://dxoigrqfwlsgi" path="res://models/body.tscn" id="3_oaeti"]
 
-[node name="car" node_paths=PackedStringArray("smoke_emiters") instance=ExtResource("1_jka5e")]
+[node name="car" instance=ExtResource("1_jka5e")]
 mass = 60.0
-smoke_emiters = [NodePath("smoke"), NodePath("smoke2"), NodePath("smoke3"), NodePath("smoke4")]
 
 [node name="wheels" parent="wheal0" index="0" instance=ExtResource("2_evbxi")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
@@ -37,5 +36,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.04967, 0.101191, 1.53229)
 [node name="smoke2" parent="." index="9"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.01173, 0.101191, 1.53229)
 
-[node name="ShadedDark00" parent="." index="12"]
-position = Vector2(389, 314)
+[node name="ReflectionProbe" type="ReflectionProbe" parent="." index="13"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4417, 0)
+update_mode = 1
+
+[editable path="vfx"]

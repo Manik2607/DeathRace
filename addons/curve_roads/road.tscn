@@ -35,14 +35,14 @@ path_u_distance = 1.0
 path_joined = true
 material = SubResource("ShaderMaterial_8gi1j")
 
-[node name="road2" type="CSGPolygon3D" parent="."]
+[node name="border-2" type="CSGPolygon3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.192177, 0, 0.502342)
 use_collision = true
 polygon = PackedVector2Array(0, 0, 0, 2, 0.636018, 1.99367, 1, 0)
 mode = 2
 path_node = NodePath("..")
 path_interval_type = 0
-path_interval = 4.0
+path_interval = 0.26
 path_simplify_angle = 1.0
 path_rotation = 2
 path_local = false
@@ -50,14 +50,14 @@ path_continuous_u = true
 path_u_distance = 1.0
 path_joined = true
 
-[node name="road3" type="CSGPolygon3D" parent="."]
+[node name="border-1" type="CSGPolygon3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0596466, 0, -0.157455)
 use_collision = true
 polygon = PackedVector2Array(14, 0, 14.3858, 2.00492, 15, 2, 15, 0)
 mode = 2
 path_node = NodePath("..")
 path_interval_type = 0
-path_interval = 4.0
+path_interval = 0.26
 path_simplify_angle = 1.0
 path_rotation = 2
 path_local = false

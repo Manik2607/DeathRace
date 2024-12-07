@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://bynr524dxke3n"]
+[gd_scene load_steps=11 format=3 uid="uid://bynr524dxke3n"]
 
 [ext_resource type="Texture2D" uid="uid://bjki20y2o2s7c" path="res://textures/textures/dark/texture_01.png" id="1_xdod3"]
 [ext_resource type="Material" uid="uid://ddal25jay8fq1" path="res://textures/materials/purple/material_01.tres" id="2_l2pdt"]
+[ext_resource type="PackedScene" uid="uid://d3u7wdfm3p27r" path="res://addons/curve_roads/road.tscn" id="4_m8i84"]
 [ext_resource type="PackedScene" uid="uid://dgo0jm33yjkap" path="res://cars/car.tscn" id="5_6m0di"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_0rmvc"]
@@ -15,6 +16,17 @@ sky = SubResource("Sky_v5aih")
 ambient_light_source = 3
 ambient_light_color = Color(0.47451, 0.47451, 0.47451, 1)
 tonemap_mode = 3
+ssr_enabled = true
+ssao_enabled = true
+ssao_radius = 1.72
+ssao_power = 4.24264
+sdfgi_enabled = true
+glow_bloom = 0.05
+glow_blend_mode = 0
+glow_hdr_threshold = 1.03
+volumetric_fog_density = 0.04
+adjustment_enabled = true
+adjustment_brightness = 1.1
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xs5b4"]
 albedo_texture = ExtResource("1_xdod3")
@@ -34,8 +46,6 @@ environment = SubResource("Environment_xivrx")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.00945952, -0.999955, 2.06732e-08, 0.541611, -0.00512359, 0.840614, -0.840576, 0.00795181, 0.541635, 0, 8.66696, 0)
-light_color = Color(1, 0.996078, 0.984314, 1)
-light_energy = 0.8
 shadow_enabled = true
 
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
@@ -139,10 +149,6 @@ custom_minimum_size = Vector2(200, 50)
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="car" parent="." instance=ExtResource("5_6m0di")]
-transform = Transform3D(0.92418, 0, -0.381958, 0, 1, 0, 0.381958, 0, 0.92418, -1.14347, 0.685165, -1.59334)
-mass = 70.0
-
 [node name="boxes" type="CSGCombiner3D" parent="."]
 material_override = ExtResource("2_l2pdt")
 use_collision = true
@@ -202,6 +208,13 @@ polygon = PackedVector2Array(0.00715375, 1.42501, 3.12986, 0.0221902, 0.00715375
 depth = 5.77
 
 [node name="CSGPolygon3D3" type="CSGPolygon3D" parent="boxes"]
-transform = Transform3D(-2.1114, 0, 0.160796, 0, 2.11752, 0, -0.160796, 0, -2.1114, -59.9349, 8.46971, -43.4792)
+transform = Transform3D(-2.1114, 0, 0.160796, 0, 2.11752, 0, -0.160796, 0, -2.1114, -59.9349, 0.0826645, -43.4792)
 polygon = PackedVector2Array(0.00715375, 1.42501, 3.12986, 0.0221902, 0.00715375, 0.0221902)
 depth = 5.77
+
+[node name="car" parent="boxes" instance=ExtResource("5_6m0di")]
+transform = Transform3D(0.290619, 0, 0.956839, 0, 1, 0, -0.956839, 0, 0.290619, 60.8691, 6.55177, 17.8126)
+mass = 70.0
+
+[node name="Road" parent="." instance=ExtResource("4_m8i84")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.0696, 0.5, -16.7409)

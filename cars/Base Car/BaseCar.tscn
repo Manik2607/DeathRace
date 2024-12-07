@@ -13,7 +13,7 @@
 
 [sub_resource type="Curve" id="Curve_te4h6"]
 max_value = 200.0
-_data = [Vector2(0, 200), 0.0, 4.28585, 0, 0, Vector2(0.395161, 160.736), -436.596, -436.596, 0, 0, Vector2(1, 28.2209), -184.178, 0.0, 0, 0]
+_data = [Vector2(0.0218579, 200), 0.0, 4.28585, 0, 0, Vector2(0.395161, 160.736), -436.596, -436.596, 0, 0, Vector2(1, 28.2209), -184.178, 0.0, 0, 0]
 point_count = 3
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_mm2gk"]
@@ -281,7 +281,6 @@ text = "Settings
 
 [node name="smoke" type="GPUParticles3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.04967, 0.348711, 2.06384)
-visible = false
 emitting = false
 amount = 50
 lifetime = 1.5
@@ -290,7 +289,6 @@ draw_pass_1 = SubResource("QuadMesh_eq52u")
 
 [node name="smoke2" type="GPUParticles3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.01173, 0.348711, 2.06384)
-visible = false
 emitting = false
 amount = 50
 lifetime = 1.5
@@ -299,7 +297,6 @@ draw_pass_1 = SubResource("QuadMesh_eq52u")
 
 [node name="smoke3" type="GPUParticles3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.04967, 0.264338, -1.34305)
-visible = false
 emitting = false
 amount = 50
 lifetime = 1.5
@@ -308,7 +305,6 @@ draw_pass_1 = SubResource("QuadMesh_eq52u")
 
 [node name="smoke4" type="GPUParticles3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.01173, 0.264338, -1.34305)
-visible = false
 emitting = false
 amount = 50
 lifetime = 1.5
@@ -316,11 +312,5 @@ process_material = SubResource("ParticleProcessMaterial_gdvol")
 draw_pass_1 = SubResource("QuadMesh_eq52u")
 
 [node name="vfx" parent="." instance=ExtResource("10_6xmci")]
-
-[node name="Chromatic" parent="vfx" index="1"]
-visible = false
-
-[node name="motion blur" parent="vfx" index="2"]
-visible = false
 
 [editable path="vfx"]

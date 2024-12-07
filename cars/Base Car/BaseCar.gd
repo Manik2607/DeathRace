@@ -69,13 +69,3 @@ func _physics_process(delta):
 func traction(speed):
 	if speed>0:
 		apply_central_force(Vector3.DOWN*speed)
-
-
-
-
-
-
-
-
-
-

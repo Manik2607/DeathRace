@@ -44,8 +44,3 @@ func is_in_circle(pos:Vector2,radi:float) -> bool:
 	else:
 		return false
 		
-
-
-
-
-
