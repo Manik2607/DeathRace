@@ -1,0 +1,12 @@
+[gd_scene load_steps=5 format=3 uid="uid://br532pn66iwvw"]
+
+[ext_resource type="Script" path="res://addons/Multiplayer/Scripts/game.gd" id="1_c67gl"]
+[ext_resource type="PackedScene" uid="uid://c43u7of71xdrw" path="res://addons/Multiplayer/menu.tscn" id="2_jm82l"]
+[ext_resource type="PackedScene" uid="uid://dgo0jm33yjkap" path="res://cars/car.tscn" id="3_3ymk2"]
+[ext_resource type="PackedScene" uid="uid://bynr524dxke3n" path="res://main.tscn" id="4_erf6v"]
+
+[node name="GameManager" type="Node3D"]
+script = ExtResource("1_c67gl")
+menu_scene = ExtResource("2_jm82l")
+player_scene = ExtResource("3_3ymk2")
+map_scene = ExtResource("4_erf6v")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://cjvqxx7sn62vx"]
+[gd_scene load_steps=23 format=3 uid="uid://cjvqxx7sn62vx"]
 
 [ext_resource type="Script" path="res://cars/Base Car/BaseCar.gd" id="1_rtle7"]
 [ext_resource type="PackedScene" path="res://Extra/camera/camera_3d.tscn" id="2_qvnp0"]
@@ -41,14 +41,14 @@ point_count = 2
 curve = SubResource("Curve_mxq50")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_gdvol"]
+angle_min = -360.0
+angle_max = 360.0
 direction = Vector3(0, 0, 1)
 spread = 8.0
 gravity = Vector3(0, 4, 0)
 damping_min = 3.0
 damping_max = 5.0
 damping_curve = SubResource("CurveTexture_q1bhm")
-angle_min = -360.0
-angle_max = 360.0
 scale_min = 0.8
 scale_max = 1.5
 scale_curve = SubResource("CurveTexture_gdn8m")
@@ -68,6 +68,29 @@ particles_anim_loop = false
 
 [sub_resource type="QuadMesh" id="QuadMesh_eq52u"]
 material = SubResource("StandardMaterial3D_87lo5")
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_oxxcc"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath(".:rotation")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+properties/2/path = NodePath(".:steering")
+properties/2/spawn = true
+properties/2/replication_mode = 1
+properties/3/path = NodePath("smoke:emitting")
+properties/3/spawn = true
+properties/3/replication_mode = 2
+properties/4/path = NodePath("smoke2:emitting")
+properties/4/spawn = true
+properties/4/replication_mode = 2
+properties/5/path = NodePath("smoke3:emitting")
+properties/5/spawn = true
+properties/5/replication_mode = 2
+properties/6/path = NodePath("smoke4:emitting")
+properties/6/spawn = true
+properties/6/replication_mode = 2
 
 [node name="car" type="VehicleBody3D" node_paths=PackedStringArray("smoke_emiters")]
 center_of_mass_mode = 1
@@ -312,5 +335,13 @@ process_material = SubResource("ParticleProcessMaterial_gdvol")
 draw_pass_1 = SubResource("QuadMesh_eq52u")
 
 [node name="vfx" parent="." instance=ExtResource("10_6xmci")]
+
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.02794, 0)
+text = "10
+"
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_oxxcc")
 
 [editable path="vfx"]

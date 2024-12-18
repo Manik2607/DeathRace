@@ -22,7 +22,7 @@ curve = SubResource("Curve3D_nk3re")
 
 [node name="road" type="CSGPolygon3D" parent="."]
 use_collision = true
-polygon = PackedVector2Array(0, 0, 15, 0, 15, 0.3, 0, 0.3)
+polygon = PackedVector2Array(0, 0, 20, 0, 20, 0.3, 0, 0.3)
 mode = 2
 path_node = NodePath("..")
 path_interval_type = 0
@@ -36,7 +36,6 @@ path_joined = true
 material = SubResource("ShaderMaterial_8gi1j")
 
 [node name="border-2" type="CSGPolygon3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.192177, 0, 0.502342)
 use_collision = true
 polygon = PackedVector2Array(0, 0, 0, 2, 0.636018, 1.99367, 1, 0)
 mode = 2
@@ -51,9 +50,8 @@ path_u_distance = 1.0
 path_joined = true
 
 [node name="border-1" type="CSGPolygon3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0596466, 0, -0.157455)
 use_collision = true
-polygon = PackedVector2Array(14, 0, 14.3858, 2.00492, 15, 2, 15, 0)
+polygon = PackedVector2Array(19, 0, 19, 2, 20, 2, 20, 0)
 mode = 2
 path_node = NodePath("..")
 path_interval_type = 0

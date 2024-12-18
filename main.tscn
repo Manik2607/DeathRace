@@ -3,7 +3,6 @@
 [ext_resource type="Texture2D" uid="uid://bjki20y2o2s7c" path="res://textures/textures/dark/texture_01.png" id="1_xdod3"]
 [ext_resource type="Material" uid="uid://ddal25jay8fq1" path="res://textures/materials/purple/material_01.tres" id="2_l2pdt"]
 [ext_resource type="PackedScene" uid="uid://d3u7wdfm3p27r" path="res://addons/curve_roads/road.tscn" id="4_m8i84"]
-[ext_resource type="PackedScene" uid="uid://dgo0jm33yjkap" path="res://cars/car.tscn" id="5_6m0di"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_0rmvc"]
 
@@ -38,6 +37,10 @@ font_size = 45
 
 [sub_resource type="LabelSettings" id="LabelSettings_qi4lo"]
 font_size = 22
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3wble"]
+albedo_color = Color(0.411765, 0.439216, 0.458824, 1)
+normal_enabled = true
 
 [node name="main" type="Node3D"]
 
@@ -212,9 +215,25 @@ transform = Transform3D(-2.1114, 0, 0.160796, 0, 2.11752, 0, -0.160796, 0, -2.11
 polygon = PackedVector2Array(0.00715375, 1.42501, 3.12986, 0.0221902, 0.00715375, 0.0221902)
 depth = 5.77
 
-[node name="car" parent="boxes" instance=ExtResource("5_6m0di")]
-transform = Transform3D(0.290619, 0, 0.956839, 0, 1, 0, -0.956839, 0, 0.290619, 60.8691, 6.55177, 17.8126)
-mass = 70.0
-
 [node name="Road" parent="." instance=ExtResource("4_m8i84")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.0696, 0.5, -16.7409)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -95.8206, 0)
+
+[node name="border-1" parent="Road" index="2"]
+material_override = SubResource("StandardMaterial3D_3wble")
+
+[node name="Players" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -77.4104, -60.0798, -3.8147e-06)
+
+[node name="p1" type="Node3D" parent="Players"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.49295, 1.30345, 0)
+
+[node name="p2" type="Node3D" parent="Players"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.87401, 1.30345, 0)
+
+[node name="p3" type="Node3D" parent="Players"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.87401, 1.30345, 9.14708)
+
+[node name="p4" type="Node3D" parent="Players"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25325, 1.30345, 9.14708)
+
+[editable path="Road"]

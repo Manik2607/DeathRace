@@ -20,6 +20,8 @@ config/icon="res://icon.svg"
 [autoload]
 
 Debug="*res://Extra/debug.tscn"
+Main="*res://addons/Multiplayer/main.tscn"
+GameManager="*res://addons/Multiplayer/game_manager.tscn"
 
 [display]
 
@@ -83,7 +85,6 @@ pointing/emulate_touch_from_mouse=true
 [rendering]
 
 renderer/rendering_method.mobile="gl_compatibility"
-textures/vram_compression/import_etc2_astc=true
-textures/default_filters/anisotropic_filtering_level=3
 camera/depth_of_field/depth_of_field_bokeh_shape=0
+textures/default_filters/texture_mipmap_bias=-2.0
 anti_aliasing/quality/screen_space_aa=1

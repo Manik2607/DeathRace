@@ -15,9 +15,28 @@ var stear_mode = modes.keyboad
 var steer_target = 0
 
 @export var smoke_emiters : Array[GPUParticles3D]
+
+
+# Peer id.
+@export var peer_id : int : 
+	set(value):
+		peer_id = value
+		name = str(peer_id)
+		$Label3D.text = str(peer_id)
+		set_multiplayer_authority(peer_id)
+
 func _ready():
 	if OS.get_name() == "Android":
 		stear_mode = modes.stearing
+	# Set local camera.
+	$look/Camera3D.current = peer_id == multiplayer.get_unique_id()
+	# Set process functions for current player.
+	var is_local = is_multiplayer_authority()
+	set_process_input(is_local)
+	set_physics_process(is_local)
+	set_process(is_local)
+	$vfx.visible = is_local
+	$look/Camera3D.set_physics_process(is_local)
 		
 func _physics_process(delta):
 #	var speed=-$wheal3.get_rpm()*0.377*$wheal3.wheel_radius
