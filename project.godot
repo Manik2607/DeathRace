@@ -82,9 +82,13 @@ r={
 
 pointing/emulate_touch_from_mouse=true
 
+[physics]
+
+3d/physics_engine="JoltPhysics3D"
+
 [rendering]
 
 renderer/rendering_method.mobile="gl_compatibility"
 camera/depth_of_field/depth_of_field_bokeh_shape=0
 textures/default_filters/texture_mipmap_bias=-2.0
-anti_aliasing/quality/screen_space_aa=1
+anti_aliasing/quality/use_taa=true

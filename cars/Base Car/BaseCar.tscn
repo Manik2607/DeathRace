@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://cjvqxx7sn62vx"]
+[gd_scene load_steps=24 format=3 uid="uid://cjvqxx7sn62vx"]
 
 [ext_resource type="Script" path="res://cars/Base Car/BaseCar.gd" id="1_rtle7"]
 [ext_resource type="PackedScene" path="res://Extra/camera/camera_3d.tscn" id="2_qvnp0"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://dfa15bxwcx4le" path="res://vfx/e3229ba527181068e37946773f41546b.png" id="7_xwad6"]
 [ext_resource type="Texture2D" uid="uid://csffx32ow1rcw" path="res://UI/Images/shadedDark00.png" id="8_umj2v"]
 [ext_resource type="PackedScene" uid="uid://bp7vfygdcboxb" path="res://vfx.tscn" id="10_6xmci"]
+[ext_resource type="AudioStream" uid="uid://j2u53lrhd8ue" path="res://cars/Base Car/audio/bugatti_speed.mp3" id="11_cd5mc"]
 
 [sub_resource type="Curve" id="Curve_te4h6"]
 max_value = 200.0
@@ -17,7 +18,7 @@ _data = [Vector2(0.0218579, 200), 0.0, 4.28585, 0, 0, Vector2(0.395161, 160.736)
 point_count = 3
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_mm2gk"]
-size = Vector3(2.08254, 1.39698, 5.70427)
+size = Vector3(2.08254, 1.04767, 4.95086)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1ma5q"]
 radius = 43.49
@@ -91,6 +92,12 @@ properties/5/replication_mode = 2
 properties/6/path = NodePath("smoke4:emitting")
 properties/6/spawn = true
 properties/6/replication_mode = 2
+properties/7/path = NodePath(".:engine_force")
+properties/7/spawn = true
+properties/7/replication_mode = 1
+properties/8/path = NodePath(".:linear_velocity")
+properties/8/spawn = true
+properties/8/replication_mode = 1
 
 [node name="car" type="VehicleBody3D" node_paths=PackedStringArray("smoke_emiters")]
 center_of_mass_mode = 1
@@ -343,5 +350,11 @@ text = "10
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_oxxcc")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("11_cd5mc")
+max_distance = 100.0
+
+[node name="AudioListener3D" type="AudioListener3D" parent="."]
 
 [editable path="vfx"]

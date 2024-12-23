@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://j2u53lrhd8ue"
+path="res://.godot/imported/bugatti_speed.mp3-0b3bf78b8981f2384f664b58e413b4d9.mp3str"
+
+[deps]
+
+source_file="res://cars/Base Car/audio/bugatti_speed.mp3"
+dest_files=["res://.godot/imported/bugatti_speed.mp3-0b3bf78b8981f2384f664b58e413b4d9.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

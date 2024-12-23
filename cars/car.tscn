@@ -19,6 +19,9 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 
 [node name="wheels4" parent="wheal3" index="0" instance=ExtResource("2_evbxi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
+[node name="CollisionShape3D" parent="." index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.730845, -0.115536)
+
 [node name="bugatti" parent="." index="5" instance=ExtResource("3_oaeti")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.575238, 0)
 
@@ -38,9 +41,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.04967, 0.101191, 1.53229)
 
 [node name="smoke2" parent="." index="9"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.01173, 0.101191, 1.53229)
-
-[node name="ReflectionProbe" type="ReflectionProbe" parent="." index="13"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4417, 0)
-update_mode = 1
 
 [editable path="vfx"]

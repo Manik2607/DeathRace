@@ -9,7 +9,7 @@ extends VehicleBody3D
 
 enum modes{
 	keyboad,
-	stearing 
+	stearing
 }
 var stear_mode = modes.keyboad
 var steer_target = 0
@@ -18,7 +18,7 @@ var steer_target = 0
 
 
 # Peer id.
-@export var peer_id : int : 
+@export var peer_id : int :
 	set(value):
 		peer_id = value
 		name = str(peer_id)
@@ -31,6 +31,7 @@ func _ready():
 	# Set local camera.
 	$look/Camera3D.current = peer_id == multiplayer.get_unique_id()
 	# Set process functions for current player.
+	$AudioListener3D.current = peer_id == multiplayer.get_unique_id()
 	var is_local = is_multiplayer_authority()
 	set_process_input(is_local)
 	set_physics_process(is_local)
@@ -60,6 +61,7 @@ func _physics_process(delta):
 		engine_force = 0
 		
 	if Input.is_action_pressed("w"):
+		handle_sound()
 		if fwd_map>=-2:
 			engine_force = -force_curve.sample(speed_scale)
 		else:
@@ -85,6 +87,29 @@ func _physics_process(delta):
 
 
 
+
 func traction(speed):
 	if speed>0:
 		apply_central_force(Vector3.DOWN*speed)
+		
+		
+		
+		
+func handle_sound():
+	if !$AudioStreamPlayer3D.playing:
+		$AudioStreamPlayer3D.play()  # Ensure the sound is playing
+
+	var speed = linear_velocity.length()  # Get the speed in meters per second
+	var pitch_base = 1.0  # Base pitch for idle or low speeds
+	var pitch_max = 2.5  # Maximum pitch when at top speed
+	var max_engine_speed = 100.0  # Adjust based on your game's top engine speed
+
+	# Calculate pitch based on speed with a logarithmic curve for realism
+	var engine_speed = clamp(speed / max_engine_speed, 0.0, 1.0)
+	var pitch = lerpf(pitch_base, pitch_max, engine_speed)
+
+	# Add a slight fluctuation for a more dynamic engine sound (optional)
+	pitch += randf_range(-0.02, 0.02)
+
+	# Smoothly interpolate pitch to avoid sudden changes
+	$AudioStreamPlayer3D.pitch_scale = lerp($AudioStreamPlayer3D.pitch_scale, pitch, 0.1)

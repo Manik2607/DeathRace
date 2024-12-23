@@ -1,30 +1,32 @@
-[gd_scene load_steps=11 format=3 uid="uid://bynr524dxke3n"]
+[gd_scene load_steps=12 format=3 uid="uid://bynr524dxke3n"]
 
+[ext_resource type="Texture2D" uid="uid://ffisiudngvgr" path="res://textures/hdrs/sunflowers_puresky_2k.exr" id="1_s6uvb"]
 [ext_resource type="Texture2D" uid="uid://bjki20y2o2s7c" path="res://textures/textures/dark/texture_01.png" id="1_xdod3"]
 [ext_resource type="Material" uid="uid://ddal25jay8fq1" path="res://textures/materials/purple/material_01.tres" id="2_l2pdt"]
 [ext_resource type="PackedScene" uid="uid://d3u7wdfm3p27r" path="res://addons/curve_roads/road.tscn" id="4_m8i84"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_0rmvc"]
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_pg8l4"]
+panorama = ExtResource("1_s6uvb")
+filter = false
 
-[sub_resource type="Sky" id="Sky_v5aih"]
-sky_material = SubResource("ProceduralSkyMaterial_0rmvc")
+[sub_resource type="Sky" id="Sky_o88d7"]
+sky_material = SubResource("PanoramaSkyMaterial_pg8l4")
 
 [sub_resource type="Environment" id="Environment_xivrx"]
 background_mode = 2
-sky = SubResource("Sky_v5aih")
+sky = SubResource("Sky_o88d7")
 ambient_light_source = 3
-ambient_light_color = Color(0.47451, 0.47451, 0.47451, 1)
 tonemap_mode = 3
 ssr_enabled = true
 ssao_enabled = true
 ssao_radius = 1.72
 ssao_power = 4.24264
 sdfgi_enabled = true
+sdfgi_min_cell_size = 0.976563
 glow_bloom = 0.05
-glow_blend_mode = 0
+glow_blend_mode = 3
 glow_hdr_threshold = 1.03
 volumetric_fog_density = 0.04
-adjustment_enabled = true
 adjustment_brightness = 1.1
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xs5b4"]
@@ -48,7 +50,7 @@ normal_enabled = true
 environment = SubResource("Environment_xivrx")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.00945952, -0.999955, 2.06732e-08, 0.541611, -0.00512359, 0.840614, -0.840576, 0.00795181, 0.541635, 0, 8.66696, 0)
+transform = Transform3D(0.707107, 0.565462, -0.424561, 0, 0.60042, 0.799685, 0.707107, -0.565462, 0.424561, -0.658932, 41.9484, -51.7538)
 shadow_enabled = true
 
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
@@ -216,13 +218,13 @@ polygon = PackedVector2Array(0.00715375, 1.42501, 3.12986, 0.0221902, 0.00715375
 depth = 5.77
 
 [node name="Road" parent="." instance=ExtResource("4_m8i84")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -95.8206, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.16122, 0)
 
 [node name="border-1" parent="Road" index="2"]
 material_override = SubResource("StandardMaterial3D_3wble")
 
 [node name="Players" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -77.4104, -60.0798, -3.8147e-06)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -77.4104, 39.4372, -3.8147e-06)
 
 [node name="p1" type="Node3D" parent="Players"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.49295, 1.30345, 0)
