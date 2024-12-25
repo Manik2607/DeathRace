@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://bhrkat3ox0854"]
+
+[resource]
+resource_name = "Dark Aluminium.001"
+cull_mode = 2
+albedo_color = Color(0.189748, 0.189748, 0.189748, 1)
+metallic = 0.868182
+roughness = 0.46

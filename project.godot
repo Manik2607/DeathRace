@@ -22,6 +22,7 @@ config/icon="res://icon.svg"
 Debug="*res://Extra/debug.tscn"
 Main="*res://addons/Multiplayer/main.tscn"
 GameManager="*res://addons/Multiplayer/game_manager.tscn"
+SettingsDataManager="*res://addons/modular-settings-menu/singletons/settings_data_manager.gd"
 
 [display]
 
@@ -39,7 +40,7 @@ movie_writer/fps=30
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/zylann.hterrain/plugin.cfg")
+enabled=PackedStringArray("res://addons/modular-settings-menu/plugin.cfg")
 
 [input]
 
@@ -92,3 +93,4 @@ renderer/rendering_method.mobile="gl_compatibility"
 camera/depth_of_field/depth_of_field_bokeh_shape=0
 textures/default_filters/texture_mipmap_bias=-2.0
 anti_aliasing/quality/use_taa=true
+environment/defaults/default_environment="res://env.res"

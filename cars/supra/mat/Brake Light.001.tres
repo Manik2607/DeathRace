@@ -1,0 +1,12 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://bndfe001vyy5r"]
+
+[ext_resource type="Texture2D" uid="uid://dm7hdk8ny37jf" path="res://cars/supra/textures/Brake Light Texture.jpg" id="1_giviw"]
+
+[resource]
+resource_name = "Brake Light.001"
+cull_mode = 2
+albedo_color = Color(0, 0, 0, 1)
+metallic = 1.0
+emission_enabled = true
+emission_energy_multiplier = 9.5
+emission_texture = ExtResource("1_giviw")

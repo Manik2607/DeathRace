@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://nllqyhghc8j3"]
+
+[resource]
+resource_name = "Body.001"
+albedo_color = Color(0.389287, 0.389287, 0.389287, 1)
+metallic = 0.46
+roughness = 0.01
+clearcoat_roughness = 0.09
+grow_amount = -0.295

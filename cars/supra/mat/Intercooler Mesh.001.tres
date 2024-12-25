@@ -1,0 +1,11 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://hq13vhn2lwqi"]
+
+[ext_resource type="Texture2D" uid="uid://dhxgms0a83w6m" path="res://cars/supra/textures/Intercooler Texture.jpg" id="1_qkxkg"]
+
+[resource]
+resource_name = "Intercooler Mesh.001"
+cull_mode = 2
+albedo_color = Color(0.189748, 0.189748, 0.189748, 1)
+albedo_texture = ExtResource("1_qkxkg")
+metallic = 0.868182
+roughness = 0.413636

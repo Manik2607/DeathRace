@@ -1,22 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://dcb6sxvs0n3we"]
+[gd_scene load_steps=3 format=3 uid="uid://dcb6sxvs0n3we"]
 
 [ext_resource type="PackedScene" uid="uid://p7srhn5dvjhn" path="res://addons/curve_roads/RaceTrack.tscn" id="1_grcah"]
-[ext_resource type="PackedScene" uid="uid://dgo0jm33yjkap" path="res://cars/car.tscn" id="2_7vk4n"]
-
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_w2muk"]
-sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
-ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
-
-[sub_resource type="Sky" id="Sky_eplqn"]
-sky_material = SubResource("ProceduralSkyMaterial_w2muk")
-
-[sub_resource type="Environment" id="Environment_2pqkw"]
-background_mode = 2
-sky = SubResource("Sky_eplqn")
-tonemap_mode = 2
-ssao_enabled = true
-sdfgi_enabled = true
-glow_enabled = true
+[ext_resource type="PackedScene" uid="uid://4e22paa5wtqc" path="res://cars/supra/supra.tscn" id="2_lty6r"]
 
 [node name="t1" type="Node3D"]
 
@@ -24,10 +9,7 @@ glow_enabled = true
 transform = Transform3D(-0.846193, -0.505634, 0.168202, 0, 0.315649, 0.948876, -0.532876, 0.802932, -0.2671, 0, 0, 0)
 shadow_enabled = true
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_2pqkw")
-
 [node name="Road" parent="." instance=ExtResource("1_grcah")]
 
-[node name="car" parent="Road" instance=ExtResource("2_7vk4n")]
+[node name="supra" parent="Road" instance=ExtResource("2_lty6r")]
 transform = Transform3D(0.935789, 0, -0.35256, 0, 1, 0, 0.35256, 0, 0.935789, 141.529, 2.10277, 0)

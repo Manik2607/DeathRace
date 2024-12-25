@@ -31,7 +31,110 @@ animation/trimming=false
 animation/remove_immutable_tracks=true
 animation/import_rest_as_RESET=false
 import_script/path=""
-_subresources={}
+_subresources={
+"materials": {
+"Body.001": {
+"use_external/enabled": true,
+"use_external/path": "res://cars/supra/mat/Body.001.tres"
+},
+"Brake Disks.001": {
+"use_external/enabled": true,
+"use_external/path": "res://cars/supra/mat/Brake Disks.001.tres"
+},
+"Brake Light.001": {
+"use_external/enabled": true,
+"use_external/path": "res://cars/supra/mat/Brake Light.001.tres"
+},
+"Dark Aluminium.001": {
+"use_external/enabled": true,
+"use_external/path": "res://cars/supra/mat/Dark Aluminium.001.tres"
+},
+"Exhaust.001": {
+"use_external/enabled": true,
+"use_external/path": "res://cars/supra/mat/Exhaust.001.tres"
+},
+"Hard Plastic.001": {
+"use_external/enabled": true,
+"use_external/path": "res://cars/supra/mat/Hard Plastic.001.tres"
+},
+"Headlight.001": {
+"use_external/enabled": true,
+"use_external/path": "res://cars/supra/mat/Headlight.001.tres"
+},
+"Intercooler Mesh.001": {
+"use_external/enabled": true,
+"use_external/path": "res://cars/supra/mat/Intercooler Mesh.001.tres"
+},
+"Light Base.001": {
+"use_external/enabled": true,
+"use_external/path": "res://cars/supra/mat/Light Base.001.tres"
+},
+"Light Glass.001": {
+"use_external/enabled": true,
+"use_external/path": "res://cars/supra/mat/Light Glass.001.tres"
+},
+"Mirror.001": {
+"use_external/enabled": true,
+"use_external/path": "res://cars/supra/mat/Mirror.001.tres"
+},
+"Rear Window.001": {
+"use_external/enabled": true,
+"use_external/path": "res://cars/supra/mat/Rear Window.001.tres"
+},
+"Reverse Light.001": {
+"use_external/enabled": true,
+"use_external/path": "res://cars/supra/mat/Reverse Light.001.tres"
+},
+"Seals.001": {
+"use_external/enabled": true,
+"use_external/path": "res://cars/supra/mat/Seals.001.tres"
+},
+"Shiny Badge.001": {
+"use_external/enabled": true,
+"use_external/path": "res://cars/supra/mat/Shiny Badge.001.tres"
+},
+"Small Lights.001": {
+"use_external/enabled": true,
+"use_external/path": "res://cars/supra/mat/Small Lights.001.tres"
+},
+"Taillight Base.001": {
+"use_external/enabled": true,
+"use_external/path": "res://cars/supra/mat/Taillight Base.001.tres"
+},
+"Tire Wall.001": {
+"use_external/enabled": true,
+"use_external/path": "res://cars/supra/mat/Tire Wall.001.tres"
+},
+"Tire.001": {
+"use_external/enabled": true,
+"use_external/path": "res://cars/supra/mat/Tire.001.tres"
+},
+"Turn Signal.001": {
+"use_external/enabled": true,
+"use_external/path": "res://cars/supra/mat/Turn Signal.001.tres"
+},
+"Void.001": {
+"use_external/enabled": true,
+"use_external/path": "res://cars/supra/mat/Void.001.tres"
+},
+"Wheels.001": {
+"use_external/enabled": true,
+"use_external/path": "res://cars/supra/mat/Wheels.001.tres"
+},
+"Windows.001": {
+"use_external/enabled": true,
+"use_external/path": "res://cars/supra/mat/Windows.001.tres"
+},
+"Windshield.001": {
+"use_external/enabled": true,
+"use_external/path": "res://cars/supra/mat/Windshield.001.tres"
+},
+"Wiper Rubber.001": {
+"use_external/enabled": true,
+"use_external/path": "res://cars/supra/mat/Wiper Rubber.001.tres"
+}
+}
+}
 blender/nodes/visible=0
 blender/nodes/active_collection_only=false
 blender/nodes/punctual_lights=true

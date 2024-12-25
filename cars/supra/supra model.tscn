@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://4q13xatqb0bt"]
+
+[ext_resource type="PackedScene" uid="uid://0nt1ky2e0a52" path="res://cars/supra/suuuuuuuuuuuuuuuuuuup.blend" id="1_4o2ul"]
+
+[node name="suuuuuuuuuuuuuuuuuuup" instance=ExtResource("1_4o2ul")]
+
+[node name="The Wheels_001" parent="." index="0"]
+visible = false

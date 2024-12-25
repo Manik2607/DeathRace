@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://cx1x2sbbrydcb"]
+
+[ext_resource type="Texture2D" uid="uid://c0erohkdmsiyf" path="res://cars/supra/textures/Rear Window Texture.png" id="1_wnvsj"]
+
+[resource]
+resource_name = "Rear Window.001"
+cull_mode = 2
+albedo_color = Color(0, 0, 0, 1)
+albedo_texture = ExtResource("1_wnvsj")
+roughness = 0.05

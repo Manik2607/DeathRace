@@ -5,6 +5,7 @@ extends VehicleBody3D
 @export var STEER_LIMIT = 0.6
 @export var max_speed = 200
 @export var blur_amount=0.012
+@export var downward_force = 1.5
 @export var force_curve : Curve
 
 enum modes{
@@ -61,7 +62,6 @@ func _physics_process(delta):
 		engine_force = 0
 		
 	if Input.is_action_pressed("w"):
-		handle_sound()
 		if fwd_map>=-2:
 			engine_force = -force_curve.sample(speed_scale)
 		else:
@@ -85,15 +85,14 @@ func _physics_process(delta):
 	else:
 		steering = move_toward(steering, steer_target, STEER_SPEED * delta)
 
+func _process(delta):
+	handle_sound()
 
 
 
 func traction(speed):
 	if speed>0:
-		apply_central_force(Vector3.DOWN*speed)
-		
-		
-		
+		apply_central_force(Vector3.DOWN*speed*downward_force)
 		
 func handle_sound():
 	if !$AudioStreamPlayer3D.playing:

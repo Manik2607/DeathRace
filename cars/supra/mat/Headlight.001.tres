@@ -1,0 +1,12 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://bsbiuit0s0x4t"]
+
+[ext_resource type="Texture2D" uid="uid://0j02vbedeue4" path="res://cars/supra/textures/Headlight Texture.jpg" id="1_moqvd"]
+
+[resource]
+resource_name = "Headlight.001"
+cull_mode = 2
+albedo_color = Color(0, 0, 0, 1)
+metallic = 1.0
+emission_enabled = true
+emission_energy_multiplier = 10.0
+emission_texture = ExtResource("1_moqvd")

@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://cs7yx22flk5k8"]
+
+[resource]
+resource_name = "Brake Disks.001"
+cull_mode = 2
+albedo_color = Color(0.806639, 0.806639, 0.806639, 1)
+metallic = 1.0
+roughness = 0.2

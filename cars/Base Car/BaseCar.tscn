@@ -1,7 +1,7 @@
 [gd_scene load_steps=24 format=3 uid="uid://cjvqxx7sn62vx"]
 
 [ext_resource type="Script" path="res://cars/Base Car/BaseCar.gd" id="1_rtle7"]
-[ext_resource type="PackedScene" path="res://Extra/camera/camera_3d.tscn" id="2_qvnp0"]
+[ext_resource type="PackedScene" uid="uid://c2wdhkfa1r14f" path="res://Extra/camera/camera_3d.tscn" id="2_qvnp0"]
 [ext_resource type="Script" path="res://UI/Hud.gd" id="3_l2ghs"]
 [ext_resource type="Texture2D" uid="uid://c1yr54hqel7dn" path="res://UI/Images/SteeringWheel.png" id="3_oeuny"]
 [ext_resource type="Script" path="res://cars/stearing.gd" id="4_kx7uv"]
@@ -18,7 +18,7 @@ _data = [Vector2(0.0218579, 200), 0.0, 4.28585, 0, 0, Vector2(0.395161, 160.736)
 point_count = 3
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_mm2gk"]
-size = Vector3(2.08254, 1.04767, 4.95086)
+size = Vector3(2.42285, 1.27797, 5.96678)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1ma5q"]
 radius = 43.49

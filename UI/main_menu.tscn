@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://dpsvnv081nr5c"]
+[gd_scene load_steps=12 format=3 uid="uid://dpsvnv081nr5c"]
 
 [ext_resource type="Script" path="res://UI/main_menu.gd" id="1_gq6jr"]
 [ext_resource type="PackedScene" uid="uid://bynr524dxke3n" path="res://main.tscn" id="2_h2yxr"]
 [ext_resource type="PackedScene" uid="uid://doo78ojdk6qju" path="res://Test/t_1.tscn" id="3_5vnoe"]
 [ext_resource type="PackedScene" uid="uid://dier3hb5qx6sh" path="res://levels/mario.tscn" id="4_bmuri"]
 [ext_resource type="PackedScene" uid="uid://c8h81iunvfuha" path="res://addons/Multiplayer/main.tscn" id="5_wn1bb"]
+[ext_resource type="PackedScene" uid="uid://px6a2dg8cawb" path="res://addons/modular-settings-menu/scenes/settings.tscn" id="6_2ab5u"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3nbib"]
 bg_color = Color(0.180392, 0.180392, 0.180392, 1)
@@ -65,10 +66,10 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 238.0
-offset_top = 83.0
-offset_right = -238.0
-offset_bottom = -83.0
+offset_left = 292.0
+offset_top = 203.0
+offset_right = -292.0
+offset_bottom = -203.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -131,7 +132,13 @@ theme_override_constants/outline_size = 0
 theme_override_font_sizes/font_size = 25
 text = "Test 2"
 
+[node name="Settings" parent="." node_paths=PackedStringArray("MenuPanelRef") instance=ExtResource("6_2ab5u")]
+visible = false
+layout_mode = 1
+MenuPanelRef = NodePath("..")
+
 [connection signal="button_down" from="Panel/VBoxContainer/Button" to="." method="_on_button_button_down"]
 [connection signal="pressed" from="Panel/VBoxContainer/Multiplayer" to="." method="_on_multiplayer_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/Settings" to="." method="_on_settings_pressed"]
 [connection signal="button_down" from="Panel/VBoxContainer/HBoxContainer/Test1" to="." method="_on_test_1_button_down"]
 [connection signal="button_down" from="Panel/VBoxContainer/HBoxContainer/Test2" to="." method="_on_test_2_button_down"]

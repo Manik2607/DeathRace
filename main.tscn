@@ -1,33 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://bynr524dxke3n"]
+[gd_scene load_steps=9 format=3 uid="uid://bynr524dxke3n"]
 
-[ext_resource type="Texture2D" uid="uid://ffisiudngvgr" path="res://textures/hdrs/sunflowers_puresky_2k.exr" id="1_s6uvb"]
+[ext_resource type="Environment" uid="uid://coqgtvid2a5hw" path="res://env.res" id="1_3cv1p"]
 [ext_resource type="Texture2D" uid="uid://bjki20y2o2s7c" path="res://textures/textures/dark/texture_01.png" id="1_xdod3"]
 [ext_resource type="Material" uid="uid://ddal25jay8fq1" path="res://textures/materials/purple/material_01.tres" id="2_l2pdt"]
 [ext_resource type="PackedScene" uid="uid://d3u7wdfm3p27r" path="res://addons/curve_roads/road.tscn" id="4_m8i84"]
-
-[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_pg8l4"]
-panorama = ExtResource("1_s6uvb")
-filter = false
-
-[sub_resource type="Sky" id="Sky_o88d7"]
-sky_material = SubResource("PanoramaSkyMaterial_pg8l4")
-
-[sub_resource type="Environment" id="Environment_xivrx"]
-background_mode = 2
-sky = SubResource("Sky_o88d7")
-ambient_light_source = 3
-tonemap_mode = 3
-ssr_enabled = true
-ssao_enabled = true
-ssao_radius = 1.72
-ssao_power = 4.24264
-sdfgi_enabled = true
-sdfgi_min_cell_size = 0.976563
-glow_bloom = 0.05
-glow_blend_mode = 3
-glow_hdr_threshold = 1.03
-volumetric_fog_density = 0.04
-adjustment_brightness = 1.1
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xs5b4"]
 albedo_texture = ExtResource("1_xdod3")
@@ -47,7 +23,7 @@ normal_enabled = true
 [node name="main" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_xivrx")
+environment = ExtResource("1_3cv1p")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.707107, 0.565462, -0.424561, 0, 0.60042, 0.799685, 0.707107, -0.565462, 0.424561, -0.658932, 41.9484, -51.7538)

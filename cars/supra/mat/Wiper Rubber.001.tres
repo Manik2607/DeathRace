@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://dice6dhxwnpte"]
+
+[resource]
+resource_name = "Wiper Rubber.001"
+cull_mode = 2
+albedo_color = Color(0, 0, 0, 1)
+metallic = 0.795455
+roughness = 0.672727

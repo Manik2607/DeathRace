@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://b84smtij1eoit"]
+
+[ext_resource type="Texture2D" uid="uid://b6cakbdr3k3q4" path="res://cars/supra/textures/Windshield Texture.png" id="1_ipn6p"]
+
+[resource]
+resource_name = "Windshield.001"
+cull_mode = 2
+albedo_color = Color(0, 0, 0, 1)
+albedo_texture = ExtResource("1_ipn6p")
+roughness = 0.05

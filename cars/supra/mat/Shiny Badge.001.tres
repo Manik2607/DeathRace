@@ -1,0 +1,11 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://bh6d1jjotdbup"]
+
+[ext_resource type="Texture2D" uid="uid://clkar7yn8va5u" path="res://cars/supra/textures/Toyota Badge.png" id="1_cw62c"]
+
+[resource]
+resource_name = "Shiny Badge.001"
+cull_mode = 2
+albedo_color = Color(0.583831, 0.583831, 0.583831, 1)
+albedo_texture = ExtResource("1_cw62c")
+metallic = 1.0
+roughness = 0.2
