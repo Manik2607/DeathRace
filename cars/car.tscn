@@ -33,9 +33,6 @@ target_distance = 4.0
 target_height = 2.0
 speed = 10.0
 
-[node name="Hud" parent="." index="7"]
-visible = false
-
 [node name="smoke" parent="." index="8"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.04967, 0.101191, 1.53229)
 

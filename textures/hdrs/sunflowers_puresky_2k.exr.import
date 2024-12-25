@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://ffisiudngvgr"
 path.bptc="res://.godot/imported/sunflowers_puresky_2k.exr-011dc83d3fdcab19a313f39b1ffcef2c.bptc.ctex"
+path.astc="res://.godot/imported/sunflowers_puresky_2k.exr-011dc83d3fdcab19a313f39b1ffcef2c.astc.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://textures/hdrs/sunflowers_puresky_2k.exr"
-dest_files=["res://.godot/imported/sunflowers_puresky_2k.exr-011dc83d3fdcab19a313f39b1ffcef2c.bptc.ctex"]
+dest_files=["res://.godot/imported/sunflowers_puresky_2k.exr-011dc83d3fdcab19a313f39b1ffcef2c.bptc.ctex", "res://.godot/imported/sunflowers_puresky_2k.exr-011dc83d3fdcab19a313f39b1ffcef2c.astc.ctex"]
 
 [params]
 

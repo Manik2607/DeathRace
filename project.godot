@@ -26,8 +26,11 @@ SettingsDataManager="*res://addons/modular-settings-menu/singletons/settings_dat
 
 [display]
 
-window/stretch/mode="canvas_items"
-window/stretch/aspect="expand"
+window/size/viewport_width=1920
+window/size/viewport_height=1080
+window/size/window_width_override=1920
+window/size/window_height_override=1080
+window/stretch/mode="viewport"
 
 [dotnet]
 
@@ -90,6 +93,7 @@ pointing/emulate_touch_from_mouse=true
 [rendering]
 
 renderer/rendering_method.mobile="gl_compatibility"
+textures/vram_compression/import_etc2_astc=true
 camera/depth_of_field/depth_of_field_bokeh_shape=0
 textures/default_filters/texture_mipmap_bias=-2.0
 anti_aliasing/quality/use_taa=true

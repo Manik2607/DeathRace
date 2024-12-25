@@ -169,13 +169,13 @@ grow_horizontal = 0
 grow_vertical = 2
 
 [node name="stearing" type="Sprite2D" parent="Hud/Control"]
-position = Vector2(-244, 391)
+position = Vector2(-473, 692)
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("3_oeuny")
 script = ExtResource("4_kx7uv")
 
 [node name="Up" type="TouchScreenButton" parent="Hud"]
-position = Vector2(200, 200)
+position = Vector2(231, 528)
 scale = Vector2(1.5, 1.5)
 texture_normal = ExtResource("5_85jji")
 shape = SubResource("CircleShape2D_1ma5q")
@@ -183,14 +183,14 @@ action = "w"
 
 [node name="Down" type="TouchScreenButton" parent="Hud"]
 z_index = 2
-position = Vector2(200, 410)
+position = Vector2(231, 738)
 scale = Vector2(1.5, 1.5)
 texture_normal = ExtResource("6_pt06j")
 shape = SubResource("CircleShape2D_1ma5q")
 action = "s"
 
 [node name="break" type="TouchScreenButton" parent="Hud"]
-position = Vector2(377, 303)
+position = Vector2(408, 631)
 scale = Vector2(1.5, 1.5)
 texture_normal = ExtResource("8_umj2v")
 shape = SubResource("CircleShape2D_hygkd")
