@@ -90,6 +90,7 @@ pointing/emulate_touch_from_mouse=true
 [rendering]
 
 renderer/rendering_method.mobile="gl_compatibility"
+textures/vram_compression/import_etc2_astc=true
 camera/depth_of_field/depth_of_field_bokeh_shape=0
 textures/default_filters/texture_mipmap_bias=-2.0
 anti_aliasing/quality/use_taa=true
