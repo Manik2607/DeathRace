@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://cjvqxx7sn62vx"]
+[gd_scene load_steps=25 format=3 uid="uid://cjvqxx7sn62vx"]
 
 [ext_resource type="Script" path="res://cars/Base Car/BaseCar.gd" id="1_rtle7"]
 [ext_resource type="PackedScene" uid="uid://c2wdhkfa1r14f" path="res://Extra/camera/camera_3d.tscn" id="2_qvnp0"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://3m68bjo3x7ro" path="res://UI/Images/shadedDark27.png" id="6_pt06j"]
 [ext_resource type="Texture2D" uid="uid://dfa15bxwcx4le" path="res://vfx/e3229ba527181068e37946773f41546b.png" id="7_xwad6"]
 [ext_resource type="Texture2D" uid="uid://csffx32ow1rcw" path="res://UI/Images/shadedDark00.png" id="8_umj2v"]
+[ext_resource type="PackedScene" uid="uid://px6a2dg8cawb" path="res://addons/modular-settings-menu/scenes/settings.tscn" id="9_bbfir"]
 [ext_resource type="PackedScene" uid="uid://bp7vfygdcboxb" path="res://vfx.tscn" id="10_6xmci"]
 [ext_resource type="AudioStream" uid="uid://j2u53lrhd8ue" path="res://cars/Base Car/audio/bugatti_speed.mp3" id="11_cd5mc"]
 
@@ -98,6 +99,12 @@ properties/7/replication_mode = 1
 properties/8/path = NodePath(".:linear_velocity")
 properties/8/spawn = true
 properties/8/replication_mode = 1
+properties/9/path = NodePath("AudioStreamPlayer3D:playing")
+properties/9/spawn = true
+properties/9/replication_mode = 2
+properties/10/path = NodePath("AudioStreamPlayer3D:pitch_scale")
+properties/10/spawn = true
+properties/10/replication_mode = 2
 
 [node name="car" type="VehicleBody3D" node_paths=PackedStringArray("smoke_emiters")]
 center_of_mass_mode = 1
@@ -309,6 +316,11 @@ grow_horizontal = 0
 text = "Settings
 "
 
+[node name="Settings" parent="Hud" node_paths=PackedStringArray("MenuPanelRef") instance=ExtResource("9_bbfir")]
+visible = false
+IS_IN_GAME_MENU = false
+MenuPanelRef = NodePath("../settings")
+
 [node name="smoke" type="GPUParticles3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.04967, 0.348711, 2.06384)
 emitting = false
@@ -348,13 +360,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.02794, 0)
 text = "10
 "
 
-[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
-replication_config = SubResource("SceneReplicationConfig_oxxcc")
-
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("11_cd5mc")
 max_distance = 100.0
 
 [node name="AudioListener3D" type="AudioListener3D" parent="."]
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_oxxcc")
+
+[connection signal="settings_menu_closed" from="Hud/Settings" to="Hud" method="_on_settings_settings_menu_closed"]
 
 [editable path="vfx"]
