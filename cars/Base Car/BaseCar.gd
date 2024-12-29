@@ -112,3 +112,7 @@ func handle_sound():
 
 	# Smoothly interpolate pitch to avoid sudden changes
 	$AudioStreamPlayer3D.pitch_scale = lerp($AudioStreamPlayer3D.pitch_scale, pitch, 0.1)
+
+
+func win():
+	print($Label3D.text+ " player win")

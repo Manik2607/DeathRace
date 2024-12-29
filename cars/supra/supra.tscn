@@ -4,7 +4,7 @@
 [ext_resource type="Material" uid="uid://cxrgckivf4tud" path="res://cars/supra/mat/Wheels.001.tres" id="2_pcn8o"]
 [ext_resource type="Material" uid="uid://djyf7s62cxl3i" path="res://cars/supra/mat/Tire.001.tres" id="3_5mtyc"]
 [ext_resource type="Material" uid="uid://bl8a6xv7wmiof" path="res://cars/supra/mat/Tire Wall.001.tres" id="4_pfydn"]
-[ext_resource type="PackedScene" uid="uid://4q13xatqb0bt" path="res://cars/supra/supra model.tscn" id="5_vlq0h"]
+[ext_resource type="PackedScene" path="res://cars/supra/supra model.tscn" id="5_vlq0h"]
 
 [sub_resource type="Curve" id="Curve_flxnj"]
 max_value = 300.0
@@ -176,5 +176,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.01173, -0.0763921, -1.7578
 
 [node name="suuuuuuuuuuuuuuuuuuup" parent="." index="16" instance=ExtResource("5_vlq0h")]
 transform = Transform3D(-0.5, 0, -4.37114e-08, 0, 0.5, 0, 4.37114e-08, 0, -0.5, 0, 0.7, 0)
+
+[connection signal="pressed" from="Hud/settings" to="Hud" method="_on_settings_pressed"]
 
 [editable path="vfx"]

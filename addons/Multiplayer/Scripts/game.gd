@@ -3,18 +3,18 @@
 # Manages game states
 extends Node3D
 
-const PORT : int = 1784
+const PORT: int = 1784
 
-@onready var main : Node = get_tree().root.get_node("Main")
-@onready var players : Node = main.get_node("Players")
+@onready var main: Node = get_tree().root.get_node("Main")
+@onready var players: Node = main.get_node("Players")
 
 
-var menu : Control = null
-var map : Node = null
+var menu: Control = null
+var map: Node = null
 
-@export var menu_scene : PackedScene
-@export var player_scene : PackedScene
-@export var map_scene : PackedScene
+@export var menu_scene: PackedScene
+@export var player_scene: PackedScene
+@export var map_scene: PackedScene
 
 
 func _ready():
@@ -40,15 +40,18 @@ func load_map():
 	spawn_player(multiplayer.get_unique_id())
 
 func spawn_player(id: int):
-	var player : VehicleBody3D = player_scene.instantiate()
+	var player: VehicleBody3D = player_scene.instantiate()
 	player.peer_id = id
-	var pnode = map.get_node("Players").get_children()[players.get_child_count()]
 	
-	print(pnode.name)
-	if pnode:
-		player.global_position = pnode.global_position
-	players.add_child(player, true) 
+	# Get the spawn point based on the number of players
+	var spawn_point_index = players.get_child_count()
+	var spawn_point = map.get_node("Players").get_child(spawn_point_index)
+	print(spawn_point.name)
 	
+	if spawn_point:
+		player.global_position = spawn_point.global_position
+	players.add_child(player, true)
+
 func remove_player(id: int):
 	if not players.has_node(str(id)):
 		return

@@ -8,5 +8,11 @@ func _ready():
 
 
 
-func _on_settings_toggled(toggled_on):
-	$Panel.visible = !$Panel.visible
+
+func _on_settings_settings_menu_closed():
+	$Settings.hide()
+
+
+func _on_settings_pressed():
+	$Settings.show() # Replace with function body.
+
