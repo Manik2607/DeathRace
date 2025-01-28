@@ -1,0 +1,45 @@
+[gd_scene load_steps=4 format=3 uid="uid://d04y1lod2yhoo"]
+
+[ext_resource type="Texture2D" uid="uid://bjki20y2o2s7c" path="res://textures/textures/dark/texture_01.png" id="1_3mont"]
+[ext_resource type="Script" path="res://addons/Multiplayer/lobby.gd" id="1_uin2h"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eokbn"]
+albedo_texture = ExtResource("1_3mont")
+uv1_scale = Vector3(0.25, 0.25, 0.25)
+uv1_triplanar = true
+
+[node name="Lobby" type="Node3D"]
+script = ExtResource("1_uin2h")
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
+material_override = SubResource("StandardMaterial3D_eokbn")
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D"]
+size = Vector3(1000, 1, 1000)
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Start" type="Button" parent="Control"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -317.0
+offset_top = -151.0
+offset_right = -100.0
+offset_bottom = -90.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 35
+text = "Start"
+
+[connection signal="pressed" from="Control/Start" to="." method="_on_start_pressed"]

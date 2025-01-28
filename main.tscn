@@ -1,10 +1,12 @@
-[gd_scene load_steps=10 format=3 uid="uid://bynr524dxke3n"]
+[gd_scene load_steps=12 format=3 uid="uid://bynr524dxke3n"]
 
 [ext_resource type="Environment" uid="uid://cts0s3edl5pkl" path="res://env.res" id="1_3cv1p"]
 [ext_resource type="PackedScene" uid="uid://de13sv2f08h0t" path="res://gamelogic/finish_line.tscn" id="1_we2c4"]
 [ext_resource type="Texture2D" uid="uid://bjki20y2o2s7c" path="res://textures/textures/dark/texture_01.png" id="1_xdod3"]
 [ext_resource type="Material" uid="uid://ddal25jay8fq1" path="res://textures/materials/purple/material_01.tres" id="2_l2pdt"]
 [ext_resource type="PackedScene" uid="uid://d3u7wdfm3p27r" path="res://addons/curve_roads/road.tscn" id="4_m8i84"]
+[ext_resource type="Script" path="res://addons/Multiplayer/StartLine.gd" id="6_2jpjw"]
+[ext_resource type="PackedScene" uid="uid://dgo0jm33yjkap" path="res://cars/car.tscn" id="7_ckpm1"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xs5b4"]
 albedo_texture = ExtResource("1_xdod3")
@@ -205,17 +207,19 @@ material_override = SubResource("StandardMaterial3D_3wble")
 
 [node name="Players" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -77.4104, 15.0773, -3.8147e-06)
+script = ExtResource("6_2jpjw")
+PlayerScene = ExtResource("7_ckpm1")
 
-[node name="p1" type="Node3D" parent="Players"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.49295, 1.30345, 0)
+[node name="0" type="Node3D" parent="Players"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.999313, 1.30345, 0)
 
-[node name="p2" type="Node3D" parent="Players"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.87401, 1.30345, 0)
+[node name="1" type="Node3D" parent="Players"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.76689, 1.30345, 0)
 
-[node name="p3" type="Node3D" parent="Players"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.87401, 1.30345, 9.14708)
+[node name="2" type="Node3D" parent="Players"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.610089, 1.30345, 4.98175)
 
-[node name="p4" type="Node3D" parent="Players"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25325, 1.30345, 9.14708)
+[node name="3" type="Node3D" parent="Players"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.67568, 1.30345, 3.62491)
 
 [editable path="Road"]

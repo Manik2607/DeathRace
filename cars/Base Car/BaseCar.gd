@@ -29,16 +29,16 @@ var steer_target = 0
 func _ready():
 	if OS.get_name() == "Android":
 		stear_mode = modes.stearing
-	# Set local camera.
-	$look/Camera3D.current = peer_id == multiplayer.get_unique_id()
-	# Set process functions for current player.
-	$AudioListener3D.current = peer_id == multiplayer.get_unique_id()
+		
 	var is_local = is_multiplayer_authority()
+	$look/Camera3D.current = is_local
+	$AudioListener3D.current = is_local
 	set_process_input(is_local)
 	set_physics_process(is_local)
 	set_process(is_local)
 	$vfx.visible = is_local
 	$look/Camera3D.set_physics_process(is_local)
+
 		
 func _physics_process(delta):
 #	var speed=-$wheal3.get_rpm()*0.377*$wheal3.wheel_radius
@@ -116,3 +116,4 @@ func handle_sound():
 
 func win():
 	print($Label3D.text+ " player win")
+	

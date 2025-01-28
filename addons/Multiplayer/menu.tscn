@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://c43u7of71xdrw"]
+[gd_scene load_steps=5 format=3 uid="uid://c43u7of71xdrw"]
 
 [ext_resource type="Script" path="res://addons/Multiplayer/Scripts/menu.gd" id="1_h5orh"]
 
@@ -9,6 +9,9 @@ font_size = 40
 Button/font_sizes/font_size = 32
 Button/styles/normal = null
 LineEdit/font_sizes/font_size = 40
+
+[sub_resource type="LabelSettings" id="LabelSettings_mpyan"]
+font_size = 35
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -59,6 +62,23 @@ text = "Connect as Client"
 
 [node name="ip_Label2" type="Label" parent="VBoxContainer"]
 layout_mode = 2
+
+[node name="name" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/name"]
+layout_mode = 2
+size_flags_vertical = 1
+text = "Name : "
+label_settings = SubResource("LabelSettings_mpyan")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LineEdit" type="LineEdit" parent="VBoxContainer/name"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "tst"
+placeholder_text = "Enter your name"
 
 [connection signal="pressed" from="VBoxContainer/Create" to="." method="_on_create_pressed"]
 [connection signal="pressed" from="VBoxContainer/Connect" to="." method="_on_connect_pressed"]
