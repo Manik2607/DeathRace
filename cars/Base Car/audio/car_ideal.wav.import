@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://rue8jajpns57"
+path="res://.godot/imported/car_ideal.wav-d61f968cb467b25142e63894956466fb.sample"
+
+[deps]
+
+source_file="res://cars/Base Car/audio/car_ideal.wav"
+dest_files=["res://.godot/imported/car_ideal.wav-d61f968cb467b25142e63894956466fb.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=2
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

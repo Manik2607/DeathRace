@@ -40,14 +40,15 @@ func _ready():
 	$look/Camera3D.set_physics_process(is_local)
 
 		
+
 func _physics_process(delta):
 #	var speed=-$wheal3.get_rpm()*0.377*$wheal3.wheel_radius
 	var speed=linear_velocity.length()*3.6
 	traction(speed)
 	$Hud/speed.text=str(round(speed))
 	
-	$"vfx/motion blur".material.set("shader_parameter/blur_power",clamp(remap(speed,90,180,0,blur_amount),0,0.2))
-	$"vfx/Speed lines".material.set("shader_parameter/mask_edge",remap(speed,40,180,1,0.4))
+	$"vfx/motion blur".material.set("shader_parameter/blur_power",clamp(remap(speed,100,max_speed,0,blur_amount),0,0.2))
+	$"vfx/Speed lines".material.set("shader_parameter/mask_edge",remap(speed,50,max_speed,1,0.35))
 	if Input.is_action_pressed("r"):
 		get_tree().reload_current_scene()
 		
@@ -95,25 +96,45 @@ func traction(speed):
 		apply_central_force(Vector3.DOWN*speed*downward_force)
 		
 func handle_sound():
-	if !$AudioStreamPlayer3D.playing:
-		$AudioStreamPlayer3D.play()  # Ensure the sound is playing
-
 	var speed = linear_velocity.length()  # Get the speed in meters per second
-	var pitch_base = 1.0  # Base pitch for idle or low speeds
-	var pitch_max = 2.5  # Maximum pitch when at top speed
 	var max_engine_speed = 100.0  # Adjust based on your game's top engine speed
-
-	# Calculate pitch based on speed with a logarithmic curve for realism
 	var engine_speed = clamp(speed / max_engine_speed, 0.0, 1.0)
+	
+	var pitch_base = 1.0  # Base pitch for idle sound
+	var pitch_max = 2.5  # Maximum pitch for acceleration sound
 	var pitch = lerpf(pitch_base, pitch_max, engine_speed)
-
-	# Add a slight fluctuation for a more dynamic engine sound (optional)
-	pitch += randf_range(-0.02, 0.02)
-
+	pitch += randf_range(-0.02, 0.02)  # Slight fluctuation for realism
+	
 	# Smoothly interpolate pitch to avoid sudden changes
-	$AudioStreamPlayer3D.pitch_scale = lerp($AudioStreamPlayer3D.pitch_scale, pitch, 0.1)
+	$AudioStreamPlayer3D_Accel.pitch_scale = lerp($AudioStreamPlayer3D_Accel.pitch_scale, pitch, 0.1)
+	$AudioStreamPlayer3D_Idle.pitch_scale = lerp($AudioStreamPlayer3D_Idle.pitch_scale, pitch_base, 0.1)
+	
+	if Input.is_action_pressed("w"):  # If the vehicle is moving, play the acceleration sound
+		if !$AudioStreamPlayer3D_Accel.playing:
+			$AudioStreamPlayer3D_Accel.play()
+		if $AudioStreamPlayer3D_Idle.playing:
+			$AudioStreamPlayer3D_Idle.stop()
+	else:  # If the vehicle is idle, play the idle sound
+		if !$AudioStreamPlayer3D_Idle.playing:
+			$AudioStreamPlayer3D_Idle.play()
+		if $AudioStreamPlayer3D_Accel.playing:
+			$AudioStreamPlayer3D_Accel.stop()
 
 
 func win():
 	print($Label3D.text+ " player win")
 	
+
+
+func _on_timer_timeout():
+	_ready()
+
+@rpc("any_peer","call_local","reliable")
+func set_pos(pos:Vector3):
+	$MultiplayerSynchronizer.process_mode = Node.PROCESS_MODE_DISABLED
+	global_position = pos
+	rotation = Vector3.ZERO
+	linear_velocity = Vector3.ZERO
+	angular_velocity = Vector3.ZERO
+	engine_force = 0
+	$MultiplayerSynchronizer.process_mode = Node.PROCESS_MODE_INHERIT

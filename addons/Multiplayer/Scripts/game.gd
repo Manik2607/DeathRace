@@ -73,3 +73,11 @@ func load_game():
 		map.queue_free()
 	map = map_scene.instantiate()
 	main.add_child(map)
+
+@rpc("authority", "call_local", "reliable")
+func restart_race():
+	var index = 0
+	for p in playersData:
+		var pos = map.get_node("Players").get_child(index).global_position
+		players.get_node(str(playersData[p].id)).set_pos.rpc(pos)
+		index += 1

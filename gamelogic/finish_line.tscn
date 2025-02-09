@@ -58,13 +58,29 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -69.0
-offset_top = -69.0
-offset_right = 70.0
-offset_bottom = -34.0
+offset_left = 21.0
+offset_top = -246.0
+offset_right = 160.0
+offset_bottom = -211.0
 grow_horizontal = 2
 grow_vertical = 0
 text = "Reset"
 
+[node name="back" type="Button" parent="Control"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -147.0
+offset_top = -247.0
+offset_right = -8.0
+offset_bottom = -212.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Back"
+
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="pressed" from="Control/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Control/back" to="." method="_on_back_pressed"]

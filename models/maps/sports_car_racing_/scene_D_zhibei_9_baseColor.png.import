@@ -1,0 +1,39 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://c58i68p0tjaoy"
+path.s3tc="res://.godot/imported/scene_D_zhibei_9_baseColor.png-b0469f45d5c7353a55f4cbad4793f137.s3tc.ctex"
+path.etc2="res://.godot/imported/scene_D_zhibei_9_baseColor.png-b0469f45d5c7353a55f4cbad4793f137.etc2.ctex"
+metadata={
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
+"vram_texture": true
+}
+generator_parameters={
+"md5": "400feaf7cc6d5c2ba4e03a982b290793"
+}
+
+[deps]
+
+source_file="res://models/maps/sports_car_racing_/scene_D_zhibei_9_baseColor.png"
+dest_files=["res://.godot/imported/scene_D_zhibei_9_baseColor.png-b0469f45d5c7353a55f4cbad4793f137.s3tc.ctex", "res://.godot/imported/scene_D_zhibei_9_baseColor.png-b0469f45d5c7353a55f4cbad4793f137.etc2.ctex"]
+
+[params]
+
+compress/mode=2
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/normal_map=0
+compress/channel_pack=0
+mipmaps/generate=true
+mipmaps/limit=-1
+roughness/mode=0
+roughness/src_normal=""
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=0

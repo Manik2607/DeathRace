@@ -6,6 +6,8 @@
 
 [node name="car" instance=ExtResource("1_jka5e")]
 mass = 60.0
+max_speed = 300
+blur_amount = 0.0
 
 [node name="wheels" parent="wheal0" index="0" instance=ExtResource("2_evbxi")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
@@ -30,11 +32,8 @@ transform = Transform3D(0.999945, 0.00279329, -0.0101424, 0, 0.964105, 0.26552, 
 
 [node name="Camera3D" parent="look" index="0"]
 target_distance = 4.0
-target_height = 2.0
+target_height = 1.0
 speed = 10.0
-
-[node name="Hud" parent="." index="7"]
-visible = false
 
 [node name="smoke" parent="." index="8"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.04967, 0.101191, 1.53229)
@@ -44,5 +43,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.01173, 0.101191, 1.53229)
 
 [node name="Label3D" parent="." index="13"]
 billboard = 2
+
+[node name="Timer" type="Timer" parent="." index="17"]
+wait_time = 0.1
+one_shot = true
+autostart = true
+
+[connection signal="pressed" from="Hud/settings" to="Hud" method="_on_settings_pressed"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 
 [editable path="vfx"]
