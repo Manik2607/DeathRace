@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://bynr524dxke3n" path="res://main.tscn" id="2_h2yxr"]
 [ext_resource type="PackedScene" uid="uid://doo78ojdk6qju" path="res://Test/t_1.tscn" id="3_5vnoe"]
 [ext_resource type="PackedScene" uid="uid://dier3hb5qx6sh" path="res://levels/mario.tscn" id="4_bmuri"]
-[ext_resource type="PackedScene" uid="uid://c8h81iunvfuha" path="res://addons/Multiplayer/main.tscn" id="5_wn1bb"]
+[ext_resource type="PackedScene" uid="uid://c43u7of71xdrw" path="res://addons/Multiplayer/menu.tscn" id="5_q5ec2"]
 [ext_resource type="PackedScene" uid="uid://px6a2dg8cawb" path="res://addons/modular-settings-menu/scenes/settings.tscn" id="6_2ab5u"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3nbib"]
@@ -59,7 +59,7 @@ script = ExtResource("1_gq6jr")
 main_scene = ExtResource("2_h2yxr")
 test_scenes_0 = ExtResource("3_5vnoe")
 test_scenes_1 = ExtResource("4_bmuri")
-menu_scene = ExtResource("5_wn1bb")
+menu_scene = ExtResource("5_q5ec2")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1

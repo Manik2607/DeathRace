@@ -1,0 +1,39 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://dj5rhl2egll2c"
+path.s3tc="res://.godot/imported/scene_D_peilou_16_baseColor.jpg-3f0a411329a63ceec6bf9eb95329c48e.s3tc.ctex"
+path.etc2="res://.godot/imported/scene_D_peilou_16_baseColor.jpg-3f0a411329a63ceec6bf9eb95329c48e.etc2.ctex"
+metadata={
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
+"vram_texture": true
+}
+generator_parameters={
+"md5": "276c320b814b07ad4f487c1f8a1f7295"
+}
+
+[deps]
+
+source_file="res://models/maps/sports_car_racing_/scene_D_peilou_16_baseColor.jpg"
+dest_files=["res://.godot/imported/scene_D_peilou_16_baseColor.jpg-3f0a411329a63ceec6bf9eb95329c48e.s3tc.ctex", "res://.godot/imported/scene_D_peilou_16_baseColor.jpg-3f0a411329a63ceec6bf9eb95329c48e.etc2.ctex"]
+
+[params]
+
+compress/mode=2
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/normal_map=0
+compress/channel_pack=0
+mipmaps/generate=true
+mipmaps/limit=-1
+roughness/mode=0
+roughness/src_normal=""
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=0

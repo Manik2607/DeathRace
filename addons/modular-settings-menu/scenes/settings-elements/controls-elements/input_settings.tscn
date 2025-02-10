@@ -8,10 +8,12 @@ script/source = "extends ButtonElement
 
 ##List of actions to make remappable and how the name they should display.
 @export var ACTION_LIST_: Dictionary = {
-	\"ui_up\": \"Up\",
-	\"ui_down\": \"Down\",
-	\"ui_left\": \"Left\",
-	\"ui_right\": \"Right\",
+	\"forward\": \"Forward\",
+	\"backward\": \"Backward\",
+	\"left\": \"Left\",
+	\"right\": \"Right\",
+	\"boost\": \"Boost\",
+	\"break\": \"Break\",
 }
 
 # Path to the settings save file

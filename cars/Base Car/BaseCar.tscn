@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://cjvqxx7sn62vx"]
+[gd_scene load_steps=27 format=3 uid="uid://cjvqxx7sn62vx"]
 
 [ext_resource type="Script" path="res://cars/Base Car/BaseCar.gd" id="1_rtle7"]
 [ext_resource type="PackedScene" uid="uid://c2wdhkfa1r14f" path="res://Extra/camera/camera_3d.tscn" id="2_qvnp0"]
@@ -11,7 +11,8 @@
 [ext_resource type="Texture2D" uid="uid://csffx32ow1rcw" path="res://UI/Images/shadedDark00.png" id="8_umj2v"]
 [ext_resource type="PackedScene" uid="uid://px6a2dg8cawb" path="res://addons/modular-settings-menu/scenes/settings.tscn" id="9_bbfir"]
 [ext_resource type="PackedScene" uid="uid://bp7vfygdcboxb" path="res://vfx.tscn" id="10_6xmci"]
-[ext_resource type="AudioStream" uid="uid://j2u53lrhd8ue" path="res://cars/Base Car/audio/bugatti_speed.mp3" id="11_cd5mc"]
+[ext_resource type="AudioStream" uid="uid://ddxmyakc1eudb" path="res://cars/Base Car/audio/car_on.wav" id="12_1txd4"]
+[ext_resource type="AudioStream" uid="uid://rue8jajpns57" path="res://cars/Base Car/audio/car_ideal.wav" id="13_2mj3w"]
 
 [sub_resource type="Curve" id="Curve_te4h6"]
 max_value = 200.0
@@ -20,6 +21,9 @@ point_count = 3
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_mm2gk"]
 size = Vector3(2.42285, 1.27797, 5.96678)
+
+[sub_resource type="LabelSettings" id="LabelSettings_rxeiw"]
+font_size = 32
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1ma5q"]
 radius = 43.49
@@ -99,12 +103,6 @@ properties/7/replication_mode = 1
 properties/8/path = NodePath(".:linear_velocity")
 properties/8/spawn = true
 properties/8/replication_mode = 1
-properties/9/path = NodePath("AudioStreamPlayer3D:playing")
-properties/9/spawn = true
-properties/9/replication_mode = 2
-properties/10/path = NodePath("AudioStreamPlayer3D:pitch_scale")
-properties/10/spawn = true
-properties/10/replication_mode = 2
 
 [node name="car" type="VehicleBody3D" node_paths=PackedStringArray("smoke_emiters")]
 center_of_mass_mode = 1
@@ -166,46 +164,21 @@ speed = 12.0
 [node name="Hud" type="CanvasLayer" parent="."]
 script = ExtResource("3_l2ghs")
 
-[node name="Control" type="Control" parent="Hud"]
-layout_mode = 3
-anchors_preset = 11
-anchor_left = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 0
-grow_vertical = 2
-
-[node name="stearing" type="Sprite2D" parent="Hud/Control"]
-position = Vector2(-300, 414)
-scale = Vector2(0.6, 0.6)
-texture = ExtResource("3_oeuny")
-script = ExtResource("4_kx7uv")
-
-[node name="Up" type="TouchScreenButton" parent="Hud"]
-position = Vector2(81, 259)
-scale = Vector2(1.5, 1.5)
-texture_normal = ExtResource("5_85jji")
-shape = SubResource("CircleShape2D_1ma5q")
-action = "w"
-
-[node name="Down" type="TouchScreenButton" parent="Hud"]
-z_index = 2
-position = Vector2(81, 469)
-scale = Vector2(1.5, 1.5)
-texture_normal = ExtResource("6_pt06j")
-shape = SubResource("CircleShape2D_1ma5q")
-action = "s"
-
-[node name="break" type="TouchScreenButton" parent="Hud"]
-position = Vector2(258, 362)
-scale = Vector2(1.5, 1.5)
-texture_normal = ExtResource("8_umj2v")
-shape = SubResource("CircleShape2D_hygkd")
-action = "break"
-
 [node name="speed" type="Label" parent="Hud"]
-offset_right = 40.0
-offset_bottom = 23.0
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -57.0
+offset_top = -88.0
+offset_right = 57.0
+offset_bottom = -43.0
+grow_horizontal = 2
+grow_vertical = 0
+label_settings = SubResource("LabelSettings_rxeiw")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Panel" type="Panel" parent="Hud"]
 visible = false
@@ -321,6 +294,52 @@ visible = false
 IS_IN_GAME_MENU = false
 MenuPanelRef = NodePath("../settings")
 
+[node name="Controlls" type="Control" parent="Hud"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control" type="Control" parent="Hud/Controlls"]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="stearing" type="Sprite2D" parent="Hud/Controlls/Control"]
+position = Vector2(-244, 391)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("3_oeuny")
+script = ExtResource("4_kx7uv")
+
+[node name="Up" type="TouchScreenButton" parent="Hud/Controlls"]
+position = Vector2(200, 200)
+scale = Vector2(1.5, 1.5)
+texture_normal = ExtResource("5_85jji")
+shape = SubResource("CircleShape2D_1ma5q")
+action = "w"
+
+[node name="Down" type="TouchScreenButton" parent="Hud/Controlls"]
+z_index = 2
+position = Vector2(200, 410)
+scale = Vector2(1.5, 1.5)
+texture_normal = ExtResource("6_pt06j")
+shape = SubResource("CircleShape2D_1ma5q")
+action = "s"
+
+[node name="break" type="TouchScreenButton" parent="Hud/Controlls"]
+position = Vector2(377, 303)
+scale = Vector2(1.5, 1.5)
+texture_normal = ExtResource("8_umj2v")
+shape = SubResource("CircleShape2D_hygkd")
+action = "break"
+
 [node name="smoke" type="GPUParticles3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.04967, 0.348711, 2.06384)
 emitting = false
@@ -360,8 +379,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.02794, 0)
 text = "10
 "
 
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
-stream = ExtResource("11_cd5mc")
+[node name="AudioStreamPlayer3D_Accel" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("12_1txd4")
+max_distance = 100.0
+
+[node name="AudioStreamPlayer3D_Idle" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("13_2mj3w")
 max_distance = 100.0
 
 [node name="AudioListener3D" type="AudioListener3D" parent="."]
