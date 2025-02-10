@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://gamelogic/finish_line.gd" id="1_bg5va"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_h73ej"]
-size = Vector3(4.69397, 4.77243, 1)
+size = Vector3(10.5857, 5.19274, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_kj4oy"]
 font_size = 50
@@ -13,13 +13,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.696801, 0, 0)
 script = ExtResource("1_bg5va")
 
 [node name="CSGPolygon3D" type="CSGPolygon3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.382473, 0, 0)
-polygon = PackedVector2Array(-5.01146, 0.148213, -4.97441, 6.41022, 3.41817, 6.35464, 3.52933, 0, 1.69519, 0.0555799, 1.54698, 4.70577, -3.26996, 4.87251, -3.47375, 0.16674)
+transform = Transform3D(1.665, 0, 0, 0, 1.665, 0, 0, 0, 1.665, 0.986206, 0, 0)
+use_collision = true
+polygon = PackedVector2Array(-5.04248, -0.0478866, -4.85557, 3.75361, 3.85111, 7.42077, 3.52933, 0, 2.60252, -0.0478866, 2.62946, 4.17909, -4.08723, 3.12755, -4.31753, 0.00483753)
 
 [node name="Area3D" type="Area3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.486023, 2.34464, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.263712, 2.5548, -0.721068)
 shape = SubResource("BoxShape3D_h73ej")
 
 [node name="Control" type="Control" parent="."]

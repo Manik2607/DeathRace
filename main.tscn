@@ -27,7 +27,7 @@ normal_enabled = true
 [node name="main" type="Node3D"]
 
 [node name="FinishLine" parent="." instance=ExtResource("1_we2c4")]
-transform = Transform3D(0.26101, 0, 0.965337, 0, 1, 0, -0.965337, 0, 0.26101, -7.72342, 19.0067, -138.444)
+transform = Transform3D(-0.87495, 0, 0.484214, 0, 1, 0, -0.484215, 0, -0.87495, 2647.98, 56.2605, 1430.36)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("1_3cv1p")
@@ -35,6 +35,7 @@ environment = ExtResource("1_3cv1p")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.880087, 0.449731, -0.152279, -0.264525, 0.730741, 0.62932, 0.394301, -0.513575, 0.762081, -0.658932, 41.9484, -51.7538)
 shadow_enabled = true
+directional_shadow_max_distance = 300.0
 
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.323914, 0)
@@ -212,21 +213,21 @@ visible = false
 material_override = SubResource("StandardMaterial3D_3wble")
 
 [node name="Players" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.7009, 20.6142, -131.04)
+transform = Transform3D(-0.517564, 0, -0.855644, 0, 1, 0, 0.855644, 0, -0.517564, 38.7009, 20.6142, -131.04)
 script = ExtResource("6_2jpjw")
 PlayerScene = ExtResource("7_ckpm1")
 
 [node name="0" type="Node3D" parent="Players"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.65192, 1.30345, 0.507582)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.9125, 1.30345, -11.8448)
 
 [node name="1" type="Node3D" parent="Players"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.99212, 1.30345, 0.507582)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.18935, 1.30345, -11.4947)
 
 [node name="2" type="Node3D" parent="Players"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.53975, 1.30345, 9.84776)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.15997, 1.30345, -3.80663)
 
 [node name="3" type="Node3D" parent="Players"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.843, 1.30345, 3.88017)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.8622, 1.30345, -3.46095)
 
 [node name="Sketchfab_Scene" parent="." instance=ExtResource("8_r6fg0")]
 transform = Transform3D(150, 0, 0, 0, 150, 0, 0, 0, 150, 0, 0, 0)

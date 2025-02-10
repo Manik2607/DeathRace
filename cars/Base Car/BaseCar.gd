@@ -6,6 +6,7 @@ extends VehicleBody3D
 @export var max_speed = 200
 @export var blur_amount=0.012
 @export var downward_force = 1.5
+@export var boost_force = 500
 @export var force_curve : Curve
 
 enum modes{
@@ -54,21 +55,24 @@ func _physics_process(delta):
 		
 	var fwd_map = transform.basis.x.x
 		
-	steer_target = Input.get_action_strength("a") - Input.get_action_strength("d")
+	steer_target = Input.get_action_strength("left") - Input.get_action_strength("right")
 	steer_target *= STEER_LIMIT
 	var speed_scale = remap(speed,0,max_speed,0,1)
-	if Input.is_action_pressed("s"):
+	if Input.is_action_pressed("backward"):
 		engine_force = force_curve.sample(speed_scale)
 	else:
 		engine_force = 0
 		
-	if Input.is_action_pressed("w"):
+	if Input.is_action_pressed("forward"):
 		if fwd_map>=-2:
 			engine_force = -force_curve.sample(speed_scale)
 		else:
 			brake=0
 
-		
+	if Input.is_action_pressed("boost"):
+		var dir = -transform.basis.z
+		apply_central_force(dir*boost_force)
+
 	if Input.is_action_pressed("break"):
 		brake=3
 		$wheal2.wheel_friction_slip=0.8
@@ -109,7 +113,7 @@ func handle_sound():
 	$AudioStreamPlayer3D_Accel.pitch_scale = lerp($AudioStreamPlayer3D_Accel.pitch_scale, pitch, 0.1)
 	$AudioStreamPlayer3D_Idle.pitch_scale = lerp($AudioStreamPlayer3D_Idle.pitch_scale, pitch_base, 0.1)
 	
-	if Input.is_action_pressed("w"):  # If the vehicle is moving, play the acceleration sound
+	if Input.is_action_pressed("forward"):  # If the vehicle is moving, play the acceleration sound
 		if !$AudioStreamPlayer3D_Accel.playing:
 			$AudioStreamPlayer3D_Accel.play()
 		if $AudioStreamPlayer3D_Idle.playing:

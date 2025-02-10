@@ -4,9 +4,11 @@ extends Control
 
 func _ready():
 	multiplayer.connected_to_server.connect(conected_to_server)
-	for i in IP.get_local_addresses():
-		$ip_Label.text+=i+"\n"
-	
+	if OS.get_name() == "Android":
+		for i in IP.get_local_addresses():
+			$ip_Label.text+=i+"\n"
+	else:
+		$ip_Label.text+= IP.get_local_addresses()[5]
 
 
 func conected_to_server():

@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://addons/Multiplayer/Scripts/menu.gd" id="1_h5orh"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_dw537"]
-font_size = 40
+font_size = 32
 
 [sub_resource type="Theme" id="Theme_wfwnj"]
 Button/font_sizes/font_size = 32
@@ -25,8 +25,10 @@ metadata/_edit_lock_ = true
 
 [node name="ip_Label" type="Label" parent="."]
 layout_mode = 1
-offset_right = 240.0
-offset_bottom = 23.0
+offset_left = 2.0
+offset_top = 39.0
+offset_right = 299.0
+offset_bottom = 94.0
 label_settings = SubResource("LabelSettings_dw537")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
@@ -43,6 +45,22 @@ offset_bottom = 140.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_wfwnj")
+
+[node name="name" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/name"]
+layout_mode = 2
+size_flags_vertical = 1
+text = "Name : "
+label_settings = SubResource("LabelSettings_mpyan")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LineEdit" type="LineEdit" parent="VBoxContainer/name"]
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "Enter your name"
 
 [node name="Create" type="Button" parent="VBoxContainer"]
 custom_minimum_size = Vector2(240, 100)
@@ -62,23 +80,6 @@ text = "Connect as Client"
 
 [node name="ip_Label2" type="Label" parent="VBoxContainer"]
 layout_mode = 2
-
-[node name="name" type="HBoxContainer" parent="VBoxContainer"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="VBoxContainer/name"]
-layout_mode = 2
-size_flags_vertical = 1
-text = "Name : "
-label_settings = SubResource("LabelSettings_mpyan")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="LineEdit" type="LineEdit" parent="VBoxContainer/name"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "tst"
-placeholder_text = "Enter your name"
 
 [connection signal="pressed" from="VBoxContainer/Create" to="." method="_on_create_pressed"]
 [connection signal="pressed" from="VBoxContainer/Connect" to="." method="_on_connect_pressed"]
