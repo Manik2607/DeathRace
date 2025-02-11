@@ -180,6 +180,11 @@ label_settings = SubResource("LabelSettings_rxeiw")
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Settings" parent="Hud" node_paths=PackedStringArray("MenuPanelRef") instance=ExtResource("9_bbfir")]
+visible = false
+IS_IN_GAME_MENU = false
+MenuPanelRef = NodePath("../settings")
+
 [node name="Panel" type="Panel" parent="Hud"]
 visible = false
 anchors_preset = 11
@@ -277,6 +282,52 @@ max_value = 1.0
 step = 0.001
 value = 0.015
 
+[node name="Controlls" type="Control" parent="Hud"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="stearPoint" type="Control" parent="Hud/Controlls"]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="stearing" type="Sprite2D" parent="Hud/Controlls/stearPoint"]
+position = Vector2(-244, 391)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("3_oeuny")
+script = ExtResource("4_kx7uv")
+
+[node name="Up" type="TouchScreenButton" parent="Hud/Controlls"]
+position = Vector2(200, 200)
+scale = Vector2(1.5, 1.5)
+texture_normal = ExtResource("5_85jji")
+shape = SubResource("CircleShape2D_1ma5q")
+action = "forward"
+
+[node name="Down" type="TouchScreenButton" parent="Hud/Controlls"]
+z_index = 2
+position = Vector2(200, 410)
+scale = Vector2(1.5, 1.5)
+texture_normal = ExtResource("6_pt06j")
+shape = SubResource("CircleShape2D_1ma5q")
+action = "backward"
+
+[node name="break" type="TouchScreenButton" parent="Hud/Controlls"]
+position = Vector2(377, 303)
+scale = Vector2(1.5, 1.5)
+texture_normal = ExtResource("8_umj2v")
+shape = SubResource("CircleShape2D_hygkd")
+action = "break"
+
 [node name="settings" type="Button" parent="Hud"]
 anchors_preset = 1
 anchor_left = 1.0
@@ -288,57 +339,6 @@ offset_bottom = 62.0
 grow_horizontal = 0
 text = "Settings
 "
-
-[node name="Settings" parent="Hud" node_paths=PackedStringArray("MenuPanelRef") instance=ExtResource("9_bbfir")]
-visible = false
-IS_IN_GAME_MENU = false
-MenuPanelRef = NodePath("../settings")
-
-[node name="Controlls" type="Control" parent="Hud"]
-visible = false
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Control" type="Control" parent="Hud/Controlls"]
-layout_mode = 1
-anchors_preset = 11
-anchor_left = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 0
-grow_vertical = 2
-
-[node name="stearing" type="Sprite2D" parent="Hud/Controlls/Control"]
-position = Vector2(-244, 391)
-scale = Vector2(0.6, 0.6)
-texture = ExtResource("3_oeuny")
-script = ExtResource("4_kx7uv")
-
-[node name="Up" type="TouchScreenButton" parent="Hud/Controlls"]
-position = Vector2(200, 200)
-scale = Vector2(1.5, 1.5)
-texture_normal = ExtResource("5_85jji")
-shape = SubResource("CircleShape2D_1ma5q")
-action = "w"
-
-[node name="Down" type="TouchScreenButton" parent="Hud/Controlls"]
-z_index = 2
-position = Vector2(200, 410)
-scale = Vector2(1.5, 1.5)
-texture_normal = ExtResource("6_pt06j")
-shape = SubResource("CircleShape2D_1ma5q")
-action = "s"
-
-[node name="break" type="TouchScreenButton" parent="Hud/Controlls"]
-position = Vector2(377, 303)
-scale = Vector2(1.5, 1.5)
-texture_normal = ExtResource("8_umj2v")
-shape = SubResource("CircleShape2D_hygkd")
-action = "break"
 
 [node name="smoke" type="GPUParticles3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.04967, 0.348711, 2.06384)
@@ -373,6 +373,7 @@ process_material = SubResource("ParticleProcessMaterial_gdvol")
 draw_pass_1 = SubResource("QuadMesh_eq52u")
 
 [node name="vfx" parent="." instance=ExtResource("10_6xmci")]
+visible = false
 
 [node name="Label3D" type="Label3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.02794, 0)
@@ -393,5 +394,6 @@ max_distance = 100.0
 replication_config = SubResource("SceneReplicationConfig_oxxcc")
 
 [connection signal="settings_menu_closed" from="Hud/Settings" to="Hud" method="_on_settings_settings_menu_closed"]
+[connection signal="pressed" from="Hud/settings" to="Hud" method="_on_settings_pressed"]
 
 [editable path="vfx"]

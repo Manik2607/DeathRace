@@ -2,7 +2,7 @@ extends VehicleBody3D
 
 
 @export var STEER_SPEED = 1.5
-@export var STEER_LIMIT = 0.6
+@export var STEER_LIMIT = 0.5
 @export var max_speed = 200
 @export var blur_amount=0.012
 @export var downward_force = 1.5
@@ -86,7 +86,7 @@ func _physics_process(delta):
 		for i in smoke_emiters:
 			i.emitting = false
 	if stear_mode:
-		steering = $Hud/Control/stearing.steer_amount
+		steering = $Hud/Controlls/stearPoint/stearing.steer_amount
 	else:
 		steering = move_toward(steering, steer_target, STEER_SPEED * delta)
 

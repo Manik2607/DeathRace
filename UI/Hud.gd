@@ -15,4 +15,3 @@ func _on_settings_settings_menu_closed():
 
 func _on_settings_pressed():
 	$Settings.show() # Replace with function body.
-

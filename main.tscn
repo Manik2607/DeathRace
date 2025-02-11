@@ -1,8 +1,6 @@
-[gd_scene load_steps=13 format=3 uid="uid://bynr524dxke3n"]
+[gd_scene load_steps=12 format=3 uid="uid://bynr524dxke3n"]
 
-[ext_resource type="Environment" uid="uid://cts0s3edl5pkl" path="res://env.res" id="1_3cv1p"]
 [ext_resource type="PackedScene" uid="uid://de13sv2f08h0t" path="res://gamelogic/finish_line.tscn" id="1_we2c4"]
-
 [ext_resource type="Texture2D" uid="uid://bjki20y2o2s7c" path="res://textures/textures/dark/texture_01.png" id="1_xdod3"]
 [ext_resource type="Material" uid="uid://ddal25jay8fq1" path="res://textures/materials/purple/material_01.tres" id="2_l2pdt"]
 [ext_resource type="PackedScene" uid="uid://d3u7wdfm3p27r" path="res://addons/curve_roads/road.tscn" id="4_m8i84"]
@@ -29,9 +27,6 @@ normal_enabled = true
 
 [node name="FinishLine" parent="." instance=ExtResource("1_we2c4")]
 transform = Transform3D(-0.87495, 0, 0.484214, 0, 1, 0, -0.484215, 0, -0.87495, 2647.98, 56.2605, 1430.36)
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_vhyl8")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.880087, 0.449731, -0.152279, -0.264525, 0.730741, 0.62932, 0.394301, -0.513575, 0.762081, -0.658932, 41.9484, -51.7538)
