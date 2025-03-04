@@ -9,7 +9,7 @@ func _ready():
 			$ip_Label.text+=i+"\n"
 	else:
 		$ip_Label.text+= IP.get_local_addresses()[5]
-
+	print(IP.get_local_addresses())
 
 func conected_to_server():
 	print("conected_to_server")

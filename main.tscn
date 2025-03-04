@@ -6,7 +6,7 @@
 [ext_resource type="Material" uid="uid://ddal25jay8fq1" path="res://textures/materials/purple/material_01.tres" id="2_l2pdt"]
 [ext_resource type="PackedScene" uid="uid://d3u7wdfm3p27r" path="res://addons/curve_roads/road.tscn" id="4_m8i84"]
 [ext_resource type="Script" path="res://addons/Multiplayer/StartLine.gd" id="6_2jpjw"]
-[ext_resource type="PackedScene" uid="uid://dgo0jm33yjkap" path="res://cars/car.tscn" id="7_ckpm1"]
+[ext_resource type="PackedScene" uid="uid://4e22paa5wtqc" path="res://cars/supra/supra.tscn" id="7_8ngfj"]
 [ext_resource type="PackedScene" uid="uid://bdx6hums7crc6" path="res://models/maps/sports_car_racing_/scene.gltf" id="8_r6fg0"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xs5b4"]
@@ -215,7 +215,7 @@ material_override = SubResource("StandardMaterial3D_3wble")
 [node name="Players" type="Node3D" parent="."]
 transform = Transform3D(-0.517564, 0, -0.855644, 0, 1, 0, 0.855644, 0, -0.517564, 38.7009, 20.6142, -131.04)
 script = ExtResource("6_2jpjw")
-PlayerScene = ExtResource("7_ckpm1")
+PlayerScene = ExtResource("7_8ngfj")
 
 [node name="0" type="Node3D" parent="Players"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.9125, 1.30345, -11.8448)

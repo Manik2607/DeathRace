@@ -3,6 +3,7 @@ extends VehicleBody3D
 
 @export var STEER_SPEED = 1.5
 @export var STEER_LIMIT = 0.6
+@export var STEER_FACTOR = 0.8
 @export var max_speed = 200
 @export var blur_amount=0.012
 @export var downward_force = 1.5
@@ -55,9 +56,9 @@ func _physics_process(delta):
 		
 	var fwd_map = transform.basis.x.x
 		
-	steer_target = Input.get_action_strength("left") - Input.get_action_strength("right")
-	steer_target *= STEER_LIMIT
 	var speed_scale = remap(speed,0,max_speed,0,1)
+	steer_target = Input.get_action_strength("left") - Input.get_action_strength("right")
+	steer_target *= STEER_LIMIT * (1-speed_scale * STEER_FACTOR) 
 	if Input.is_action_pressed("backward"):
 		engine_force = force_curve.sample(speed_scale)
 	else:

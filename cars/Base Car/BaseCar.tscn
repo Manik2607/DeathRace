@@ -103,6 +103,15 @@ properties/7/replication_mode = 1
 properties/8/path = NodePath(".:linear_velocity")
 properties/8/spawn = true
 properties/8/replication_mode = 1
+properties/9/path = NodePath("AudioStreamPlayer3D_Accel:playing")
+properties/9/spawn = true
+properties/9/replication_mode = 1
+properties/10/path = NodePath("AudioStreamPlayer3D_Idle:playing")
+properties/10/spawn = true
+properties/10/replication_mode = 1
+properties/11/path = NodePath("AudioStreamPlayer3D_Accel:pitch_scale")
+properties/11/spawn = true
+properties/11/replication_mode = 1
 
 [node name="car" type="VehicleBody3D" node_paths=PackedStringArray("smoke_emiters")]
 center_of_mass_mode = 1
@@ -381,11 +390,14 @@ text = "10
 
 [node name="AudioStreamPlayer3D_Accel" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("12_1txd4")
-max_distance = 100.0
+max_distance = 200.0
+bus = &"SFX"
 
 [node name="AudioStreamPlayer3D_Idle" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("13_2mj3w")
-max_distance = 100.0
+max_distance = 200.0
+bus = &"SFX"
+doppler_tracking = 2
 
 [node name="AudioListener3D" type="AudioListener3D" parent="."]
 

@@ -8,7 +8,7 @@
 
 [sub_resource type="Curve" id="Curve_flxnj"]
 max_value = 300.0
-_data = [Vector2(0, 155.698), 0.0, -695.771, 0, 0, Vector2(0.293436, 134.109), 0.0, 0.0, 0, 0, Vector2(1, 0), -184.178, 0.0, 0, 0]
+_data = [Vector2(0, 290.11), 0.0, -695.771, 0, 0, Vector2(0.295652, 253.846), 0.0, 0.0, 0, 0, Vector2(1, 0), -184.178, 0.0, 0, 0]
 point_count = 3
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_dph34"]
@@ -115,8 +115,10 @@ shadow_mesh = SubResource("ArrayMesh_dph34")
 
 [node name="supra" instance=ExtResource("1_g4lii")]
 mass = 60.0
-blur_amount = 0.01
-downward_force = 3.0
+STEER_FACTOR = 1.0
+max_speed = 300
+blur_amount = 0.0
+boost_force = 10000
 force_curve = SubResource("Curve_flxnj")
 
 [node name="wheal0" parent="." index="0"]
@@ -158,12 +160,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.851572, 0.0972368)
 transform = Transform3D(0.999945, 0.00279329, -0.0101424, 0, 0.964105, 0.26552, 0.01052, -0.265506, 0.964052, -0.048, 0.797825, -0.09)
 
 [node name="Camera3D" parent="look" index="0"]
-target_distance = 5.0
-target_height = 2.0
-speed = 8.0
-
-[node name="Hud" parent="." index="6"]
-visible = false
+target_distance = 4.0
+target_height = 1.0
+speed = 10.0
 
 [node name="smoke" parent="." index="7"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.04967, -0.0543597, 1.70265)

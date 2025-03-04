@@ -1,7 +1,6 @@
-[gd_scene load_steps=12 format=3 uid="uid://dpsvnv081nr5c"]
+[gd_scene load_steps=11 format=3 uid="uid://dpsvnv081nr5c"]
 
 [ext_resource type="Script" path="res://UI/main_menu.gd" id="1_gq6jr"]
-[ext_resource type="PackedScene" uid="uid://bynr524dxke3n" path="res://main.tscn" id="2_h2yxr"]
 [ext_resource type="PackedScene" uid="uid://doo78ojdk6qju" path="res://Test/t_1.tscn" id="3_5vnoe"]
 [ext_resource type="PackedScene" uid="uid://dier3hb5qx6sh" path="res://levels/mario.tscn" id="4_bmuri"]
 [ext_resource type="PackedScene" uid="uid://c43u7of71xdrw" path="res://addons/Multiplayer/menu.tscn" id="5_q5ec2"]
@@ -56,7 +55,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_ts566")
 script = ExtResource("1_gq6jr")
-main_scene = ExtResource("2_h2yxr")
+main_scene = ExtResource("4_bmuri")
 test_scenes_0 = ExtResource("3_5vnoe")
 test_scenes_1 = ExtResource("4_bmuri")
 menu_scene = ExtResource("5_q5ec2")
@@ -90,7 +89,7 @@ label_settings = SubResource("LabelSettings_rx0b0")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Button" type="Button" parent="Panel/VBoxContainer"]
+[node name="Play" type="Button" parent="Panel/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 text = "Play
@@ -137,7 +136,7 @@ visible = false
 layout_mode = 1
 MenuPanelRef = NodePath("..")
 
-[connection signal="button_down" from="Panel/VBoxContainer/Button" to="." method="_on_button_button_down"]
+[connection signal="button_down" from="Panel/VBoxContainer/Play" to="." method="_on_button_button_down"]
 [connection signal="pressed" from="Panel/VBoxContainer/Multiplayer" to="." method="_on_multiplayer_pressed"]
 [connection signal="pressed" from="Panel/VBoxContainer/Settings" to="." method="_on_settings_pressed"]
 [connection signal="button_down" from="Panel/VBoxContainer/HBoxContainer/Test1" to="." method="_on_test_1_button_down"]
