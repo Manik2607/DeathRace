@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://d04y1lod2yhoo"]
 
 [ext_resource type="Texture2D" uid="uid://bjki20y2o2s7c" path="res://textures/textures/dark/texture_01.png" id="1_3mont"]
-[ext_resource type="Script" path="res://addons/Multiplayer/lobby.gd" id="1_uin2h"]
+[ext_resource type="Script" uid="uid://3igcpmeo7lpy" path="res://addons/Multiplayer/lobby.gd" id="1_uin2h"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eokbn"]
 albedo_texture = ExtResource("1_3mont")

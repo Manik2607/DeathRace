@@ -8,7 +8,7 @@ func _ready():
 		for i in IP.get_local_addresses():
 			$ip_Label.text+=i+"\n"
 	else:
-		$ip_Label.text+= IP.get_local_addresses()[5]
+			$ip_Label.text+= IP.get_local_addresses()[5]
 	print(IP.get_local_addresses())
 
 func conected_to_server():

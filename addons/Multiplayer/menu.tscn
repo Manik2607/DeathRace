@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://c43u7of71xdrw"]
 
-[ext_resource type="Script" path="res://addons/Multiplayer/Scripts/menu.gd" id="1_h5orh"]
+[ext_resource type="Script" uid="uid://b45f3rrdrf5s2" path="res://addons/Multiplayer/Scripts/menu.gd" id="1_h5orh"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_dw537"]
 font_size = 32

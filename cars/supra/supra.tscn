@@ -4,10 +4,10 @@
 [ext_resource type="Material" uid="uid://cxrgckivf4tud" path="res://cars/supra/mat/Wheels.001.tres" id="2_pcn8o"]
 [ext_resource type="Material" uid="uid://djyf7s62cxl3i" path="res://cars/supra/mat/Tire.001.tres" id="3_5mtyc"]
 [ext_resource type="Material" uid="uid://bl8a6xv7wmiof" path="res://cars/supra/mat/Tire Wall.001.tres" id="4_pfydn"]
-[ext_resource type="PackedScene" path="res://cars/supra/supra model.tscn" id="5_vlq0h"]
+[ext_resource type="PackedScene" uid="uid://4q13xatqb0bt" path="res://cars/supra/supra model.tscn" id="5_vlq0h"]
 
 [sub_resource type="Curve" id="Curve_flxnj"]
-max_value = 300.0
+_limits = [0.0, 300.0, 0.0, 1.0]
 _data = [Vector2(0, 290.11), 0.0, -695.771, 0, 0, Vector2(0.295652, 253.846), 0.0, 0.0, 0, 0, Vector2(1, 0), -184.178, 0.0, 0, 0]
 point_count = 3
 

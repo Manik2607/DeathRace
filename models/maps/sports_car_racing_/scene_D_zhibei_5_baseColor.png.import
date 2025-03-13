@@ -2,15 +2,12 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dvos23r0t0h4c"
+uid="uid://cljnj4qgtb83h"
 path.s3tc="res://.godot/imported/scene_D_zhibei_5_baseColor.png-dd61e8a6ce58fd9ab564d8750a118eb1.s3tc.ctex"
 path.etc2="res://.godot/imported/scene_D_zhibei_5_baseColor.png-dd61e8a6ce58fd9ab564d8750a118eb1.etc2.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
-}
-generator_parameters={
-"md5": "12c394425a2f5fc1380ccdb8d94f358b"
 }
 
 [deps]

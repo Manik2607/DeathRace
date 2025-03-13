@@ -1,10 +1,10 @@
 [gd_scene load_steps=27 format=3 uid="uid://cjvqxx7sn62vx"]
 
-[ext_resource type="Script" path="res://cars/Base Car/BaseCar.gd" id="1_rtle7"]
+[ext_resource type="Script" uid="uid://ccrfo66vkoe4f" path="res://cars/Base Car/BaseCar.gd" id="1_rtle7"]
 [ext_resource type="PackedScene" uid="uid://c2wdhkfa1r14f" path="res://Extra/camera/camera_3d.tscn" id="2_qvnp0"]
-[ext_resource type="Script" path="res://UI/Hud.gd" id="3_l2ghs"]
+[ext_resource type="Script" uid="uid://bcvht3dxrclro" path="res://UI/Hud.gd" id="3_l2ghs"]
 [ext_resource type="Texture2D" uid="uid://c1yr54hqel7dn" path="res://UI/Images/SteeringWheel.png" id="3_oeuny"]
-[ext_resource type="Script" path="res://cars/stearing.gd" id="4_kx7uv"]
+[ext_resource type="Script" uid="uid://cwwty3h5m2xm7" path="res://cars/stearing.gd" id="4_kx7uv"]
 [ext_resource type="Texture2D" uid="uid://do7e013e57b2v" path="res://UI/Images/shadedDark26.png" id="5_85jji"]
 [ext_resource type="Texture2D" uid="uid://3m68bjo3x7ro" path="res://UI/Images/shadedDark27.png" id="6_pt06j"]
 [ext_resource type="Texture2D" uid="uid://dfa15bxwcx4le" path="res://vfx/e3229ba527181068e37946773f41546b.png" id="7_xwad6"]
@@ -15,7 +15,7 @@
 [ext_resource type="AudioStream" uid="uid://rue8jajpns57" path="res://cars/Base Car/audio/car_ideal.wav" id="13_2mj3w"]
 
 [sub_resource type="Curve" id="Curve_te4h6"]
-max_value = 200.0
+_limits = [0.0, 200.0, 0.0, 1.0]
 _data = [Vector2(0.0218579, 200), 0.0, 4.28585, 0, 0, Vector2(0.395161, 160.736), -436.596, -436.596, 0, 0, Vector2(1, 28.2209), -184.178, 0.0, 0, 0]
 point_count = 3
 
@@ -32,7 +32,7 @@ radius = 43.49
 radius = 50.67
 
 [sub_resource type="Curve" id="Curve_ncj6c"]
-max_value = 5.0
+_limits = [0.0, 5.0, 0.0, 1.0]
 _data = [Vector2(0, 0), 0.0, 0.162213, 0, 0, Vector2(0.669872, 1.74847), 0.0, 0.0, 0, 0, Vector2(1, 1.31902), 0.0, 0.0, 0, 0]
 point_count = 3
 
@@ -76,40 +76,40 @@ particles_anim_loop = false
 material = SubResource("StandardMaterial3D_87lo5")
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_oxxcc"]
-properties/0/path = NodePath(".:position")
+properties/0/path = NodePath(".:steering")
 properties/0/spawn = true
 properties/0/replication_mode = 1
-properties/1/path = NodePath(".:rotation")
+properties/1/path = NodePath("smoke:emitting")
 properties/1/spawn = true
-properties/1/replication_mode = 1
-properties/2/path = NodePath(".:steering")
+properties/1/replication_mode = 2
+properties/2/path = NodePath("smoke2:emitting")
 properties/2/spawn = true
-properties/2/replication_mode = 1
-properties/3/path = NodePath("smoke:emitting")
+properties/2/replication_mode = 2
+properties/3/path = NodePath("smoke3:emitting")
 properties/3/spawn = true
 properties/3/replication_mode = 2
-properties/4/path = NodePath("smoke2:emitting")
+properties/4/path = NodePath("smoke4:emitting")
 properties/4/spawn = true
 properties/4/replication_mode = 2
-properties/5/path = NodePath("smoke3:emitting")
+properties/5/path = NodePath(".:engine_force")
 properties/5/spawn = true
-properties/5/replication_mode = 2
-properties/6/path = NodePath("smoke4:emitting")
+properties/5/replication_mode = 1
+properties/6/path = NodePath(".:linear_velocity")
 properties/6/spawn = true
-properties/6/replication_mode = 2
-properties/7/path = NodePath(".:engine_force")
+properties/6/replication_mode = 1
+properties/7/path = NodePath("AudioStreamPlayer3D_Accel:playing")
 properties/7/spawn = true
 properties/7/replication_mode = 1
-properties/8/path = NodePath(".:linear_velocity")
+properties/8/path = NodePath("AudioStreamPlayer3D_Idle:playing")
 properties/8/spawn = true
 properties/8/replication_mode = 1
-properties/9/path = NodePath("AudioStreamPlayer3D_Accel:playing")
+properties/9/path = NodePath("AudioStreamPlayer3D_Accel:pitch_scale")
 properties/9/spawn = true
 properties/9/replication_mode = 1
-properties/10/path = NodePath("AudioStreamPlayer3D_Idle:playing")
+properties/10/path = NodePath(".:sync_pos")
 properties/10/spawn = true
 properties/10/replication_mode = 1
-properties/11/path = NodePath("AudioStreamPlayer3D_Accel:pitch_scale")
+properties/11/path = NodePath(".:sync_rot")
 properties/11/spawn = true
 properties/11/replication_mode = 1
 

@@ -12,7 +12,7 @@ config_version=5
 
 config/name="DeathRace"
 run/main_scene="res://UI/main_menu.tscn"
-config/features=PackedStringArray("4.3", "GL Compatibility")
+config/features=PackedStringArray("4.4", "GL Compatibility")
 run/max_fps=120
 boot_splash/bg_color=Color(0.0352941, 0.0470588, 0.105882, 1)
 config/icon="res://icon.svg"
@@ -92,10 +92,11 @@ pointing/emulate_touch_from_mouse=true
 
 [physics]
 
-3d/physics_engine="JoltPhysics3D"
+3d/physics_engine="Jolt Physics"
 
 [rendering]
 
+renderer/rendering_method="mobile"
 textures/vram_compression/import_etc2_astc=true
 camera/depth_of_field/depth_of_field_bokeh_shape=0
 textures/default_filters/texture_mipmap_bias=-2.0

@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://dpsvnv081nr5c"]
 
-[ext_resource type="Script" path="res://UI/main_menu.gd" id="1_gq6jr"]
+[ext_resource type="Script" uid="uid://bqxg8g52icfkl" path="res://UI/main_menu.gd" id="1_gq6jr"]
 [ext_resource type="PackedScene" uid="uid://doo78ojdk6qju" path="res://Test/t_1.tscn" id="3_5vnoe"]
 [ext_resource type="PackedScene" uid="uid://dier3hb5qx6sh" path="res://levels/mario.tscn" id="4_bmuri"]
 [ext_resource type="PackedScene" uid="uid://c43u7of71xdrw" path="res://addons/Multiplayer/menu.tscn" id="5_q5ec2"]
