@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://bp7vfygdcboxb"]
 
-[ext_resource type="Shader" path="res://vfx/speedLines.gdshader" id="1_kqxme"]
-[ext_resource type="Shader" path="res://vfx/viniat.gdshader" id="3_h405b"]
+[ext_resource type="Shader" uid="uid://d0845k2senjer" path="res://vfx/speedLines.gdshader" id="1_kqxme"]
+[ext_resource type="Shader" uid="uid://dfjjopr4o68gm" path="res://vfx/viniat.gdshader" id="3_h405b"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_2q17d"]
 noise_type = 2
@@ -15,6 +15,7 @@ noise = SubResource("FastNoiseLite_2q17d")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ob336"]
 shader = ExtResource("1_kqxme")
+shader_parameter/noise = SubResource("NoiseTexture2D_bqwjy")
 shader_parameter/line_color = Color(1, 1, 1, 1)
 shader_parameter/line_count = 1.45
 shader_parameter/line_density = 0.518
@@ -22,7 +23,6 @@ shader_parameter/line_faloff = 0.508
 shader_parameter/mask_size = 0.092
 shader_parameter/mask_edge = 0.5
 shader_parameter/animation_speed = 14.888
-shader_parameter/noise = SubResource("NoiseTexture2D_bqwjy")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_eggye"]
 shader = ExtResource("3_h405b")

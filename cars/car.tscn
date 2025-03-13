@@ -8,6 +8,8 @@
 mass = 60.0
 max_speed = 300
 blur_amount = 0.0
+downward_force = 0.0
+boost_force = 600
 
 [node name="wheels" parent="wheal0" index="0" instance=ExtResource("2_evbxi")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)

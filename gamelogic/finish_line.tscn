@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://de13sv2f08h0t"]
 
-[ext_resource type="Script" path="res://gamelogic/finish_line.gd" id="1_bg5va"]
+[ext_resource type="Script" uid="uid://cv1k60mj1ccg5" path="res://gamelogic/finish_line.gd" id="1_bg5va"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_h73ej"]
 size = Vector3(10.5857, 5.19274, 1)

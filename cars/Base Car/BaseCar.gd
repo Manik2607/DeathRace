@@ -2,12 +2,17 @@ extends VehicleBody3D
 
 
 @export var STEER_SPEED = 1.5
-@export var STEER_LIMIT = 0.5
+@export var STEER_LIMIT = 0.6
+@export var STEER_FACTOR = 0.8
 @export var max_speed = 200
 @export var blur_amount=0.012
 @export var downward_force = 1.5
 @export var boost_force = 500
 @export var force_curve : Curve
+
+@export var sync_pos:Vector3 = Vector3.ZERO
+@export var sync_rot:Vector3 = Vector3.ZERO
+
 
 enum modes{
 	keyboad,
@@ -36,7 +41,7 @@ func _ready():
 	$AudioListener3D.current = is_local
 	set_process_input(is_local)
 	set_physics_process(is_local)
-	set_process(is_local)
+	#set_process(is_local)
 	$vfx.visible = is_local
 	$look/Camera3D.set_physics_process(is_local)
 
@@ -55,9 +60,9 @@ func _physics_process(delta):
 		
 	var fwd_map = transform.basis.x.x
 		
-	steer_target = Input.get_action_strength("left") - Input.get_action_strength("right")
-	steer_target *= STEER_LIMIT
 	var speed_scale = remap(speed,0,max_speed,0,1)
+	steer_target = Input.get_action_strength("left") - Input.get_action_strength("right")
+	steer_target *= STEER_LIMIT * (1-speed_scale * STEER_FACTOR)
 	if Input.is_action_pressed("backward"):
 		engine_force = force_curve.sample(speed_scale)
 	else:
@@ -89,9 +94,12 @@ func _physics_process(delta):
 		steering = $Hud/Controlls/stearPoint/stearing.steer_amount
 	else:
 		steering = move_toward(steering, steer_target, STEER_SPEED * delta)
+	sync_pos = global_position
+	sync_rot = global_rotation
 
 func _process(delta):
 	handle_sound()
+	sync_pos_rot()
 
 
 
@@ -142,3 +150,8 @@ func set_pos(pos:Vector3):
 	angular_velocity = Vector3.ZERO
 	engine_force = 0
 	$MultiplayerSynchronizer.process_mode = Node.PROCESS_MODE_INHERIT
+
+func sync_pos_rot():
+	if !is_multiplayer_authority():
+		global_position = global_position.lerp(sync_pos, 0.3)
+		global_rotation = global_rotation.lerp(sync_rot, 1)

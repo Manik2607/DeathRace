@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://c2wdhkfa1r14f"]
 
-[ext_resource type="Script" path="res://Extra/camera/CameraFollow.gd" id="1_pcwpe"]
+[ext_resource type="Script" uid="uid://dmheqa1xke0h8" path="res://Extra/camera/CameraFollow.gd" id="1_pcwpe"]
 
 [node name="Camera3D" type="Camera3D"]
 top_level = true

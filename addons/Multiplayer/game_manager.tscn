@@ -1,14 +1,14 @@
 [gd_scene load_steps=6 format=3 uid="uid://br532pn66iwvw"]
 
-[ext_resource type="Script" path="res://addons/Multiplayer/Scripts/game.gd" id="1_c67gl"]
+[ext_resource type="Script" uid="uid://bhnjsdilkwibw" path="res://addons/Multiplayer/Scripts/game.gd" id="1_c67gl"]
 [ext_resource type="PackedScene" uid="uid://c43u7of71xdrw" path="res://addons/Multiplayer/menu.tscn" id="2_jm82l"]
-[ext_resource type="PackedScene" uid="uid://dgo0jm33yjkap" path="res://cars/car.tscn" id="3_55sjs"]
+[ext_resource type="PackedScene" uid="uid://4e22paa5wtqc" path="res://cars/supra/supra.tscn" id="3_4r8hi"]
 [ext_resource type="PackedScene" uid="uid://bynr524dxke3n" path="res://main.tscn" id="4_erf6v"]
 [ext_resource type="PackedScene" uid="uid://d04y1lod2yhoo" path="res://addons/Multiplayer/lobby.tscn" id="5_2rgjm"]
 
 [node name="GameManager" type="Node3D"]
 script = ExtResource("1_c67gl")
 menu_scene = ExtResource("2_jm82l")
-player_scene = ExtResource("3_55sjs")
+player_scene = ExtResource("3_4r8hi")
 map_scene = ExtResource("4_erf6v")
 lobby_scene = ExtResource("5_2rgjm")
